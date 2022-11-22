@@ -16,5 +16,6 @@ padding: 12px;
 margin: 0 6px 6px;
 background: blue;
 text-decoration: none;
-color: white
+color: white;
+font-family: 'Courier New', Courier, monospace;
     `
