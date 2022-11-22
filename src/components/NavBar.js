@@ -1,15 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { StyledNavLink } from "../styled-components/NavBar.style"
 
 function NavBar(){
     return (
         <>
-            <NavLink to = "/" exact>
+            <StyledNavLink to = "/" exact activeStyle={ {background:"darkblue"}}>
                 Home
-            </NavLink>
-            <NavLink to = "/movies" exact>
+            </StyledNavLink>
+            <StyledNavLink to = "/movies" exact activeStyle={ {background:"darkblue"}}>
                 Movies
-            </NavLink>
+            </StyledNavLink>
         </>
     )
 }
