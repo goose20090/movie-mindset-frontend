@@ -4,9 +4,16 @@ import { Route, Switch } from "react-router-dom";
 import { StyledNavBar } from "./styled-components/NavBar.style";
 import Home from './components/Home';
 import Movies from './components/Movies';
+import { useEffect } from 'react';
 
 
 function App() {
+
+  useEffect(()=>{
+    fetch('http://localhost:9292/movies')
+    .then(res=> res.json())
+    .then(res=> console.log(res))
+  },[])
   return (
     <AppContainer>
       <StyledNavBar/>
