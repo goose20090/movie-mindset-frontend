@@ -7,5 +7,6 @@ body{
     padding: 0px;
     font-family: 'Roboto Slab';
     color: white;
+    background-color: black;
 }
 `
