@@ -6,6 +6,7 @@ import Home from './components/Home';
 import { useEffect, useState } from 'react';
 import {StyledMovieList} from "./styled-components/MovieList.style";
 import { StyledMovie } from './styled-components/Movie.style';
+import { StyledMoviePage } from './styled-components/MoviePage.style';
 
 
 function App() {
@@ -25,10 +26,12 @@ function App() {
       <StyledNavBar/>
       <Switch>
         <Route path = "/movies">
+          <StyledMoviePage>
           <StyledMovieList>
             <h1>It's time to watch some movies!</h1>
             {movies.map((movie)=> <StyledMovie key={movie.id} movie = {movie}/>)}
           </StyledMovieList>
+          </StyledMoviePage>
         </Route>
         <Route path="/">
           <Home>
