@@ -1,13 +1,17 @@
 import React from "react";
-function Movie({movie, className}){
-    return (
+import {useParams} from "react-router-dom"
+
+function Movie({className, movies}){
+
+    const params = useParams()
+    const currentMovie = movies[params.movieId]
+
+    return(
         <div className={className}>
-            <h4>{movie.title}</h4>
-            <p>{movie.genre} <br/>
-            Released {movie.release_date}<br/>
-            Available on {movie.streaming_platform}</p>
+            <h2>{currentMovie.title}</h2>
+            <h4>{currentMovie.genre}</h4>
         </div>
     )
 }
 
-export default Movie
+export default Movie;

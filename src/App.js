@@ -5,7 +5,6 @@ import { StyledNavBar } from "./styled-components/NavBar.style";
 import Home from './components/Home';
 import { useEffect, useState } from 'react';
 import {StyledMovieList} from "./styled-components/MovieList.style";
-import { StyledMovie } from './styled-components/Movie.style';
 import { StyledMoviePage } from './styled-components/MoviePage.style';
 
 
@@ -20,7 +19,6 @@ function App() {
     .then(res=> res.json())
     .then((res)=>{
       setMovies(res)
-      console.log(res)
     })
   },[])
 
@@ -31,13 +29,12 @@ function App() {
     </li>
   ))
 
-  
   return (
     <AppContainer>
       <StyledNavBar/>
       <Switch>
         <Route path = "/movies">
-          <StyledMoviePage>
+          <StyledMoviePage movies = {movies}>
             <StyledMovieList>
               <h1>It's time to watch some movies!</h1>
               <ul>
