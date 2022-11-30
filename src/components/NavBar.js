@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledNavLink } from "../styled-components/NavBar.style"
+import { StyledNavLink } from "../component-styles/NavBar.style"
 
 function NavBar({className}){
     return (

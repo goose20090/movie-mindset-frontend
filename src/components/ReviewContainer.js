@@ -1,9 +1,10 @@
 import React from "react";
+import { StyledReviewCard } from "../component-styles/ReviewCard.style";
 
-function ReviewContainer({className, children}){
+function ReviewContainer({className, reviews}){
     return(
         <div className={className}>
-            {children}
+            {reviews.map((review)=> <StyledReviewCard review = {review.review} user = {review.user}/>)}
         </div>
     )
 }

@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, useRouteMatch } from "react-router-dom";
-import { StyledMovie } from "../styled-components/Movie.style";
-import { StyledReviewContainer } from "../styled-components/ReviewContainer.style";
+import { StyledMovie } from "../component-styles/Movie.style";
+import { StyledReviewContainer } from "../component-styles/ReviewContainer.style";
 
-function MoviePage({className, children, movies}){
+function MoviePage({className, children, movies, reviews}){
+
     const match = useRouteMatch()
-    console.log(match)
     return (
         <div className={className}>
             {children}
             <Route path ={`${match.url}/:movieId`}>
                 <StyledMovie id = "movie" movies= {movies}/>
-                <StyledReviewContainer id = "review"/>
+                <StyledReviewContainer id = "review" reviews = {reviews}/>
             </Route>
         </div>
     )

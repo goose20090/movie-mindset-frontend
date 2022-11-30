@@ -1,17 +1,18 @@
 
-import {AppContainer} from './styled-components/Container.style'
+import {AppContainer} from './component-styles/Container.style'
 import { NavLink, Route, Switch } from "react-router-dom";
-import { StyledNavBar } from "./styled-components/NavBar.style";
+import { StyledNavBar } from "./component-styles/NavBar.style";
 import Home from './components/Home';
 import { useEffect, useState } from 'react';
-import {StyledMovieList} from "./styled-components/MovieList.style";
-import { StyledMoviePage } from './styled-components/MoviePage.style';
+import {StyledMovieList} from "./component-styles/MovieList.style";
+import { StyledMoviePage } from './component-styles/MoviePage.style';
 
 
 function App() {
 
   // Creating state for fetched movies
   const [movies, setMovies] = useState([])
+  const [reviews, setReviews] = useState([])
 
   // Fetching to backend and setting response to movies state variable
   useEffect(()=>{
@@ -20,14 +21,32 @@ function App() {
     .then((res)=>{
       setMovies(res)
     })
+
   },[])
+
+  function handleClick(e){
+    const urlArr = e.target.href.split("")
+    const movieIdArr = urlArr.slice(-2)
+    const movieStateId = movieIdArr.filter((char)=> char !== "/").join("")
+    const movieBackendId = movies[movieStateId].id
+
+    fetch(`http://localhost:9292/movies/${movieBackendId}/reviews`)
+    .then(res=> res.json())
+    .then(res=>{
+      console.log(res)
+      setReviews(res)
+    })
+    }
+  
+
 
   // Using movies variable to create links to dynamic, nested routes for each movie
   const renderMovies = Object.keys(movies).map((movieId)=> (
     <li key = {movieId}>
-      <NavLink activeStyle = {{color: "darkred"}}to = {`/movies/${movieId}`}>{movies[movieId].title}</NavLink>
+      <NavLink onClick = {handleClick} activeStyle = {{color: "darkred"}}to = {`/movies/${movieId}`}>{movies[movieId].title}</NavLink>
     </li>
   ))
+
 
   return (
     <AppContainer>
@@ -35,7 +54,7 @@ function App() {
       <Switch>
         <Route path = "/movies">
           <h1>Pick A Movie!</h1>
-          <StyledMoviePage movies = {movies}>
+          <StyledMoviePage movies = {movies} reviews= {reviews}>
             <StyledMovieList>
               <ul>
                 {renderMovies}
