@@ -4,17 +4,19 @@ import MovieList from "../components/MovieList";
 export const StyledMovieList = styled(MovieList)`
 
 border: 5px solid white;
-width: 40%;
-padding: 10px;
-height: 800px;
+padding-right: 10px;
 overflow: scroll;
 overflow-x: hidden;
-display: inline-block;
+grid-row: span 2;
+height: 50%;
 
 li{
     list-style: none;
-    margin: 2px;
-    text-decoration: none;
+    margin-left: -25px;
 }
 
+a{
+    text-decoration: underline;
+    color:white;
+}
 `

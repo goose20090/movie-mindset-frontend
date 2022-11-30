@@ -1,6 +1,6 @@
 
 import {AppContainer} from './styled-components/Container.style'
-import { Link, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import { StyledNavBar } from "./styled-components/NavBar.style";
 import Home from './components/Home';
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ function App() {
   // Using movies variable to create links to dynamic, nested routes for each movie
   const renderMovies = Object.keys(movies).map((movieId)=> (
     <li key = {movieId}>
-      <Link to = {`/movies/${movieId}`}>{movies[movieId].title}</Link>
+      <NavLink activeStyle = {{color: "darkred"}}to = {`/movies/${movieId}`}>{movies[movieId].title}</NavLink>
     </li>
   ))
 
@@ -34,9 +34,9 @@ function App() {
       <StyledNavBar/>
       <Switch>
         <Route path = "/movies">
+          <h1>Pick A Movie!</h1>
           <StyledMoviePage movies = {movies}>
             <StyledMovieList>
-              <h1>It's time to watch some movies!</h1>
               <ul>
                 {renderMovies}
               </ul>
