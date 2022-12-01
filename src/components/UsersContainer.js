@@ -1,9 +1,9 @@
 import React from "react";
 
-function UserContainer({className}){
+function UserContainer({className, children}){
     return (
         <div className={className}>
-            <h1>Hello</h1>
+            {children}
         </div>
     )
 }

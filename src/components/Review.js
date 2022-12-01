@@ -10,32 +10,34 @@ function Review({className, currentReview}){
         review = currentReview.review
     }
 
-    if(review.rating == 5){
-        ratingComment = "Masterpiece"
+    switch (review.rating){
+        case 5:
+            ratingComment = "Masterpiece"
+            break;
+        case 4:
+            ratingComment= "Very Good"
+            break;
+        case 3:
+            ratingComment = "Ok"
+            break;
+        case 2:
+            ratingComment = "Poor"
+            break;
+        case 1:
+            ratingComment = "Terrible"
+            break;
+        default:
+            ratingComment = ""
+            break;
     }
-    else if (review.rating == 4){
-        ratingComment = "Very Good"
-    }
-    else if (review.rating == 3){
-        ratingComment = "Ok"
-    }
-
-    else if (review.rating == 2){
-        ratingComment = "Poor"
-    }
-
-    else if (review.rating == 1){
-        ratingComment = "Terrible"
-    }
-
     return(
         <div className={className}>
             <p>
-                {user.name} gave this a {review.rating}/5 ({ratingComment})
+                {user.name !== undefined? user.name : ""} gave this a {review.rating}/5 ({ratingComment !== undefined? ratingComment: ""})
             </p>
 
             <p>
-                "{review.comment}"
+                "{review.comment !== undefined? review.comment: ""}"
             </p>
         </div>
     )

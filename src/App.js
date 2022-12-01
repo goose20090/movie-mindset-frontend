@@ -7,15 +7,17 @@ import { useEffect, useState } from 'react';
 import {StyledMovieList} from "./component-styles/MovieList.style";
 import { StyledMoviePage } from './component-styles/MoviePage.style';
 import { StyledUserContainer } from './component-styles/UserContainer.style';
+import { StyledUserList } from './component-styles/UserList.style';
 
 
 function App() {
 
   // Creating state for fetched movies
   const [movies, setMovies] = useState([])
+  const [users, setUsers] = useState([])
   const [reviews, setReviews] = useState([])
   const [average, setAverage] = useState("")
-  const [currentReview, setCurrentReview] = useState({})
+  const [currentReview, setCurrentReview] = useState({review: {}, user: {}, rating: ""})
 
   // Fetching to backend and setting response to movies state variable
   useEffect(()=>{
@@ -25,9 +27,16 @@ function App() {
       setMovies(res)
     })
 
+    fetch('http://localhost:9292/users')
+    .then(res=> res.json())
+    .then((res)=>{
+      setUsers(res)
+      console.log(res)
+    })
+
   },[])
 
-  function handleClick(e){
+  function handleNestedMovieClick(e){
     const urlArr = e.target.href.split("")
     const movieIdArr = urlArr.slice(-2)
     const movieStateId = movieIdArr.filter((char)=> char !== "/").join("")
@@ -42,16 +51,33 @@ function App() {
 
     })
     }
-  
+
+    function handleNestedUserClick(e){
+      const urlArr = e.target.href.split("")
+    const userIdArr = urlArr.slice(-2)
+    const userStateId = userIdArr.filter((char)=> char !== "/").join("")
+    const userBackendId = users[userStateId].id
+
+    fetch(`http://localhost:9292/user/${userBackendId}`)
+    .then(res=> res.json())
+    .then(res=>{
+      console.log(res)
+    })
+    }
 
 
   // Using movies variable to create links to dynamic, nested routes for each movie
   const renderMovies = Object.keys(movies).map((movieId)=> (
     <li key = {movieId}>
-      <NavLink onClick = {handleClick} activeStyle = {{color: "darkred"}}to = {`/movies/${movieId}`}>{movies[movieId].title}</NavLink>
+      <NavLink onClick = {handleNestedMovieClick} activeStyle = {{color: "darkred"}}to = {`/movies/${movieId}`}>{movies[movieId].title}</NavLink>
     </li>
   ))
 
+  const renderUsers = Object.keys(users).map((userId)=> (
+    <li key = {userId}>
+      <NavLink onClick = {handleNestedUserClick} activeStyle = {{color: "darkred"}}to = {`/user/${userId}`}>{users[userId].name}</NavLink>
+    </li>
+  ))
 
   return (
     <AppContainer>
@@ -68,7 +94,11 @@ function App() {
           </StyledMoviePage>
         </Route>
         <Route path = "/users">
-          <StyledUserContainer/>
+          <StyledUserContainer>
+            <StyledUserList>
+              {renderUsers}
+            </StyledUserList>
+          </StyledUserContainer>
         </Route>
         <Route path="/">
           <Home>

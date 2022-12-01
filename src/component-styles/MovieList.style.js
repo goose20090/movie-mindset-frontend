@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import MovieList from "../components/MovieList";
+import List from "../components/List";
 
-export const StyledMovieList = styled(MovieList)`
+export const StyledMovieList = styled(List)`
 
 border: 5px solid white;
 padding-right: 10px;
