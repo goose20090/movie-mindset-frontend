@@ -5,7 +5,10 @@ function ReviewCard({className, review, user}){
     return(
         <div className={className}>
             <p>
-                {review.rating} from {user.name}
+                {user.name} gives it.....
+            </p>
+            <p>
+                {review.rating}!!
             </p>
         </div>
     )

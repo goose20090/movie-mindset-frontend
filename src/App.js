@@ -13,6 +13,7 @@ function App() {
   // Creating state for fetched movies
   const [movies, setMovies] = useState([])
   const [reviews, setReviews] = useState([])
+  const [average, setAverage] = useState("")
 
   // Fetching to backend and setting response to movies state variable
   useEffect(()=>{
@@ -33,8 +34,9 @@ function App() {
     fetch(`http://localhost:9292/movies/${movieBackendId}/reviews`)
     .then(res=> res.json())
     .then(res=>{
-      console.log(res)
-      setReviews(res)
+      console.log(res.average_rating)
+      setReviews(res.return_hash)
+      setAverage(res.average_rating)
     })
     }
   
@@ -54,13 +56,16 @@ function App() {
       <Switch>
         <Route path = "/movies">
           <h1>Pick A Movie!</h1>
-          <StyledMoviePage movies = {movies} reviews= {reviews}>
+          <StyledMoviePage movies = {movies} reviews= {reviews} average = {average}>
             <StyledMovieList>
               <ul>
                 {renderMovies}
               </ul>
             </StyledMovieList>
           </StyledMoviePage>
+        </Route>
+        <Route path = "/users">
+          <h1>Users component</h1>
         </Route>
         <Route path="/">
           <Home>
