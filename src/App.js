@@ -35,7 +35,7 @@ function App() {
     .then(res=> res.json())
     .then(res=>{
       console.log(res.average_rating)
-      setReviews(res.return_hash)
+      setReviews(res.reviews_and_users)
       setAverage(res.average_rating)
     })
     }
