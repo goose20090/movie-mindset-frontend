@@ -58,7 +58,7 @@ function App() {
     const userStateId = userIdArr.filter((char)=> char !== "/").join("")
     const userBackendId = users[userStateId].id
 
-    fetch(`http://localhost:9292/user/${userBackendId}`)
+    fetch(`http://localhost:9292/users/${userBackendId}/reviews`)
     .then(res=> res.json())
     .then(res=>{
       console.log(res)
@@ -75,7 +75,7 @@ function App() {
 
   const renderUsers = Object.keys(users).map((userId)=> (
     <li key = {userId}>
-      <NavLink onClick = {handleNestedUserClick} activeStyle = {{color: "darkred"}}to = {`/user/${userId}`}>{users[userId].name}</NavLink>
+      <NavLink onClick = {handleNestedUserClick} activeStyle = {{color: "darkred"}}to = {`/users/${userId}`}>{users[userId].name}</NavLink>
     </li>
   ))
 
@@ -94,9 +94,11 @@ function App() {
           </StyledMoviePage>
         </Route>
         <Route path = "/users">
-          <StyledUserContainer>
+          <StyledUserContainer users= {users}>
             <StyledUserList>
-              {renderUsers}
+              <ul>
+                {renderUsers}
+              </ul>
             </StyledUserList>
           </StyledUserContainer>
         </Route>

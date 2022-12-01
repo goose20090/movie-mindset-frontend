@@ -1,9 +1,16 @@
 import React from "react";
+import { Route, useRouteMatch } from "react-router-dom";
+import { StyledUser } from "../component-styles/User.style";
 
-function UserContainer({className, children}){
+function UserContainer({className, children, users}){
+
+    const match = useRouteMatch()
     return (
         <div className={className}>
             {children}
+            <Route path = {`${match.url}/:userId`}>
+                <StyledUser users = {users}/>
+            </Route>
         </div>
     )
 }
