@@ -1,7 +1,8 @@
 import React from "react";
 import {useParams} from "react-router-dom"
+import {StyledUserRating} from "../component-styles/UserRating.style"
 
-function Movie({className, movies, average}){
+function Movie({className, movies, average, reviews, setCurrentReview}){
 
     const params = useParams()
     const currentMovie = movies[params.movieId]
@@ -15,6 +16,7 @@ function Movie({className, movies, average}){
                 <h4>{currentMovie.release_date}</h4>
                 <h4>Average Rating From Users: {average %1 == 0 ? average: average.toFixed(2)}</h4>
             </div>
+            {reviews.map((review)=> <StyledUserRating key = {review.review.id} review = {review.review} user = {review.user} setCurrentReview = {setCurrentReview}/>)}
         </div>
     )
 }

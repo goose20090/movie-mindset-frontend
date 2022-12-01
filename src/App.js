@@ -6,6 +6,7 @@ import Home from './components/Home';
 import { useEffect, useState } from 'react';
 import {StyledMovieList} from "./component-styles/MovieList.style";
 import { StyledMoviePage } from './component-styles/MoviePage.style';
+import { StyledUserContainer } from './component-styles/UserContainer.style';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [movies, setMovies] = useState([])
   const [reviews, setReviews] = useState([])
   const [average, setAverage] = useState("")
+  const [currentReview, setCurrentReview] = useState({})
 
   // Fetching to backend and setting response to movies state variable
   useEffect(()=>{
@@ -34,9 +36,10 @@ function App() {
     fetch(`http://localhost:9292/movies/${movieBackendId}/reviews`)
     .then(res=> res.json())
     .then(res=>{
-      console.log(res.average_rating)
       setReviews(res.reviews_and_users)
       setAverage(res.average_rating)
+      setCurrentReview(res.reviews_and_users[0])
+
     })
     }
   
@@ -56,7 +59,7 @@ function App() {
       <Switch>
         <Route path = "/movies">
           <h1>Pick A Movie!</h1>
-          <StyledMoviePage movies = {movies} reviews= {reviews} average = {average}>
+          <StyledMoviePage movies = {movies} reviews= {reviews} average = {average} currentReview = {currentReview} setCurrentReview = {setCurrentReview}>
             <StyledMovieList>
               <ul>
                 {renderMovies}
@@ -65,7 +68,7 @@ function App() {
           </StyledMoviePage>
         </Route>
         <Route path = "/users">
-          <h1>Users component</h1>
+          <StyledUserContainer/>
         </Route>
         <Route path="/">
           <Home>
