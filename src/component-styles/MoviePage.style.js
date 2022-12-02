@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import MoviePage from "../components/MoviePage";
+import MoviePage from "../components/movie-page/MoviePage"
+
 
 export const StyledMoviePage = styled(MoviePage)`
 

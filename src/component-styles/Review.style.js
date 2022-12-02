@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Review from "../components/Review";
+import Review from "../components/movie-page/Review";
 
 export const StyledReview = styled(Review)`
 border: 5px solid white;

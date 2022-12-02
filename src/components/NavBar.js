@@ -13,6 +13,9 @@ function NavBar({className}){
             <StyledNavLink to ="/users" exact activeStyle={{background: "darkred"}}>
                 Users
             </StyledNavLink>
+            <StyledNavLink to ="/reviews" exact activeStyle ={{background: "darkred"}}>
+                My Reviews
+            </StyledNavLink>
         </div>
     )
 }

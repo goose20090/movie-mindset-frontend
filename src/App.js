@@ -6,8 +6,9 @@ import Home from './components/Home';
 import { useEffect, useState } from 'react';
 import {StyledMovieList} from "./component-styles/MovieList.style";
 import { StyledMoviePage } from './component-styles/MoviePage.style';
-import { StyledUserContainer } from './component-styles/UserContainer.style';
+import { StyledUserPage } from './component-styles/UserPage.style';
 import { StyledUserList } from './component-styles/UserList.style';
+import { StyledReviewForm } from './component-styles/ReviewForm.style';
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
   const [users, setUsers] = useState([])
   const [reviews, setReviews] = useState([])
   const [average, setAverage] = useState("")
-  const [currentReview, setCurrentReview] = useState({review: {}, user: {}, rating: ""})
+  const [currentMovieReview, setCurrentMovieReview] = useState({review: {}, user: {}, rating: ""})
 
+  const [currentUserReview, setCurrentUserReview] = useState({review: {}, movie: {}, rating: ""})
   const [currentUsersReviews, setCurrentUsersReviews] = useState([{review: {}, movie: {title: ""},}])
 
   // Fetching to backend and setting response to movies state variable
@@ -48,7 +50,7 @@ function App() {
     .then(res=>{
       setReviews(res.reviews_and_users)
       setAverage(res.average_rating)
-      setCurrentReview(res.reviews_and_users[0])
+      setCurrentMovieReview(res.reviews_and_users[0])
 
     })
     }
@@ -62,7 +64,9 @@ function App() {
     fetch(`http://localhost:9292/users/${userBackendId}/reviews`)
     .then(res=> res.json())
     .then(res=>{
+      console.log(res)
       setCurrentUsersReviews(res)
+      setCurrentUserReview(res[0])
     })
     }
 
@@ -86,7 +90,7 @@ function App() {
       <Switch>
         <Route path = "/movies">
           <h1>Pick A Movie!</h1>
-          <StyledMoviePage movies = {movies} reviews= {reviews} average = {average} currentReview = {currentReview} setCurrentReview = {setCurrentReview}>
+          <StyledMoviePage movies = {movies} reviews= {reviews} average = {average} currentReview = {currentMovieReview} setCurrentReview = {setCurrentMovieReview}>
             <StyledMovieList>
               <ul>
                 {renderMovies}
@@ -96,13 +100,27 @@ function App() {
         </Route>
         <Route path = "/users">
           <h1>Our Amazing Users</h1>
-          <StyledUserContainer users= {users} currentUsersReviews = {currentUsersReviews}>
+          <StyledUserPage users= {users} currentUsersReviews = {currentUsersReviews} currentReview= {currentUserReview} setCurrentReview = {setCurrentUserReview}>
             <StyledUserList>
               <ul>
                 {renderUsers}
               </ul>
             </StyledUserList>
-          </StyledUserContainer>
+          </StyledUserPage>
+        </Route>
+        <Route path = "/reviews">
+          <StyledReviewForm>
+            <h1>My Reviews</h1>
+            <form>
+              <select>
+                {console.log(movies)}
+                {movies.map((movie)=> <option value = {movie.title}>{movie.title}</option>)}
+              </select>
+              <input id = "comment-input">
+              </input>
+              <button>Submit</button>
+            </form>
+          </StyledReviewForm>
         </Route>
         <Route path="/">
           <Home>

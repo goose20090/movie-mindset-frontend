@@ -8,7 +8,7 @@ export const StyledNavBar = styled(NavBar)`
 
 export const StyledNavLink = styled(NavLink)`
 display: inline-block;
-width: 50px;
+width: fit-content;
 padding: 12px;
 margin: 0 6px 6px;
 background: red;

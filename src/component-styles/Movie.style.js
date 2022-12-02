@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Movie from "../components/Movie";
+import Movie from "../components/movie-page/Movie";
 
 export const StyledMovie = styled(Movie)`
 
