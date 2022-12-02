@@ -1,13 +1,14 @@
 import React from "react";
 
 function Review({className, currentReview}){
-    let user
-    let review
-    let ratingComment
 
-    if (currentReview.user){
-        user = currentReview.user
-        review = currentReview.review
+    const {user, review} = currentReview;
+    let ratingComment;
+
+    let starRating = ""
+
+    for (let i = 0; i < review.rating; i ++){
+        starRating = starRating + '⭐'
     }
 
     switch (review.rating){
@@ -30,15 +31,19 @@ function Review({className, currentReview}){
             ratingComment = ""
             break;
     }
+
     return(
         <div className={className}>
-            <p>
-                {user.name !== undefined? user.name : ""} gave this a {review.rating}/5 ({ratingComment !== undefined? ratingComment: ""})
-            </p>
-
-            <p>
-                "{review.comment !== undefined? review.comment: ""}"
-            </p>
+            <div id = "review-profile">
+                <p>
+                    {user.name}
+                </p>
+                <img id = "avatar" src={user.avatar}/>
+            </div>
+            <div>
+                <p>{starRating} ({ratingComment})</p>
+                <p>"{review.comment}"</p>
+            </div>
         </div>
     )
 }

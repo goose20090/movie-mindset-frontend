@@ -3,9 +3,12 @@ import UserRating from "../components/UserRating";
 
 export const StyledUserRating = styled(UserRating)`
 
-border: 5px solid white;
-width: 250px;
+width: 200px;
 height: fit-content;
 margin: 2px;
+
+&:hover{
+    cursor: pointer;
+}
 
 `

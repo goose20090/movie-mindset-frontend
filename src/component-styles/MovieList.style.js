@@ -7,8 +7,7 @@ border: 5px solid white;
 padding-right: 10px;
 overflow: scroll;
 overflow-x: hidden;
-grid-row: span 2;
-height: 65%;
+height: 50vw;
 
 li{
     list-style: none;

@@ -5,7 +5,18 @@ export const StyledReview = styled(Review)`
 border: 5px solid white;
 height: fit-content;
 min-height: 135px;
-margin-left: 10%;
-margin-right: 10%;
+width: 280px;
+
+#review-profile{
+    border: 5px solid white;
+    display: flex;
+    justify-content: space-between;
+}
+
+#avatar{
+    width: 60px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
 
 `

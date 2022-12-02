@@ -19,6 +19,8 @@ function App() {
   const [average, setAverage] = useState("")
   const [currentReview, setCurrentReview] = useState({review: {}, user: {}, rating: ""})
 
+  const [currentUsersReviews, setCurrentUsersReviews] = useState([{review: {}, movie: {title: ""},}])
+
   // Fetching to backend and setting response to movies state variable
   useEffect(()=>{
     fetch('http://localhost:9292/movies')
@@ -31,7 +33,6 @@ function App() {
     .then(res=> res.json())
     .then((res)=>{
       setUsers(res)
-      console.log(res)
     })
 
   },[])
@@ -61,7 +62,7 @@ function App() {
     fetch(`http://localhost:9292/users/${userBackendId}/reviews`)
     .then(res=> res.json())
     .then(res=>{
-      console.log(res)
+      setCurrentUsersReviews(res)
     })
     }
 
@@ -94,7 +95,8 @@ function App() {
           </StyledMoviePage>
         </Route>
         <Route path = "/users">
-          <StyledUserContainer users= {users}>
+          <h1>Our Amazing Users</h1>
+          <StyledUserContainer users= {users} currentUsersReviews = {currentUsersReviews}>
             <StyledUserList>
               <ul>
                 {renderUsers}

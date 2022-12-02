@@ -4,10 +4,10 @@ import Movie from "../components/Movie";
 export const StyledMovie = styled(Movie)`
 
 border: 5px solid white;
-height: fit-content;
+height: 40%;
+width: 491px;
 
-margin-left: 10%;
-margin-right: 10%;
+
 padding: 1%;
 
 

@@ -1,5 +1,6 @@
 import React from "react";
 import {useParams} from "react-router-dom"
+import { StyledRatingContainer } from "../component-styles/RatingContainer.style";
 import {StyledUserRating} from "../component-styles/UserRating.style"
 
 function Movie({className, movies, average, reviews, setCurrentReview}){
@@ -16,7 +17,9 @@ function Movie({className, movies, average, reviews, setCurrentReview}){
                 <h4>{currentMovie.release_date}</h4>
                 <h4>Average Rating From Users: {average %1 == 0 ? average: average.toFixed(2)}</h4>
             </div>
-            {reviews.map((review)=> <StyledUserRating key = {review.review.id} review = {review.review} user = {review.user} setCurrentReview = {setCurrentReview}/>)}
+            <StyledRatingContainer>
+                {reviews.map((review)=> <StyledUserRating key = {review.review.id} review = {review.review} user = {review.user} setCurrentReview = {setCurrentReview}/>)}
+            </StyledRatingContainer>
         </div>
     )
 }
