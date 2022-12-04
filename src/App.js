@@ -6,15 +6,20 @@ import { StyledMoviePage } from "./component-styles/MoviePage.style";
 import { StyledNavBar } from "./component-styles/NavBar.style";
 import { StyledUserList } from "./component-styles/UserList.style";
 import { StyledUserPage } from "./component-styles/UserPage.style";
+import useQuery from "./hooks/useQuery";
 
 function App(){
 
+  const {data: movies, isLoaded}= useQuery('http://localhost:9292/movies')
+
+  console.log(movies)
 return(
   <StyledMainAppContainer>
     <StyledNavBar/> 
    <Switch>
       <Route exact path = "/movies">
         <h1>Movies</h1>
+        <h2>{isLoaded? movies[0].title : "Loading..."}</h2>
         <StyledMoviePage>
           <StyledMovieList></StyledMovieList>
         </StyledMoviePage>
