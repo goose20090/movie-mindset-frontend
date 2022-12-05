@@ -10,8 +10,7 @@ import {useQuery} from "@tanstack/react-query";
 
 function App(){
 
-
-  const {data: movies, isLoaded, error} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
+  const {data: movies, isLoading, isError} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
 
 
 return(
@@ -20,7 +19,7 @@ return(
     <Switch>
         <Route exact path = "/movies">
           <h1>Movies</h1>
-          {/* <h2>{isLoaded? movies[0].title : "Loading..."}</h2> */}
+          <h2>{isLoading? "Loading...": movies[0].title }</h2>
           <StyledMoviePage>
             <StyledMovieList></StyledMovieList>
           </StyledMoviePage>
