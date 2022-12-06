@@ -9,15 +9,13 @@ import {useQuery} from "@tanstack/react-query";
 function App(){
 
   const {data: movies, isLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
-
-
+  console.log(movies)
 return(
     <StyledMainAppContainer>
       <StyledNavBar/> 
     <Switch>
         <Route path = "/movies">
           <h1>Movies</h1>
-          <h2>{isLoading? "Loading...": movies[0].title }</h2>
           <StyledMoviePage movies = {movies} isLoading = {isLoading}/>
         </Route>
         <Route path = "/users">

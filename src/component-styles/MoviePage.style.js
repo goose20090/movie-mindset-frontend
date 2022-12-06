@@ -3,6 +3,8 @@ import MoviePage from "../components/MoviePage";
 
 export const StyledMoviePage = styled(MoviePage)`
 
-
+display: flexbox;
+justify-content: flex-start;
+gap: 20px
 
 `

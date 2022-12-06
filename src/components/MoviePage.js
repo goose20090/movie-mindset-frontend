@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {StyledMovieList} from "../component-styles/MovieList.style"
+import { StyledRatingContainer } from "../component-styles/RatingContainer.style";
+import { StyledRating } from "../component-styles/Rating.style";
+import { StyledReview } from "../component-styles/StyledReview";
 import { useRouteMatch, Route } from "react-router-dom";
-import Movie from "./Movie";
 import RenderWrapper from "./RenderWrapper";
+import { StyledMovie } from "../component-styles/Movie.style";
 
 function MoviePage({className, children, movies, isLoading}){
 
     const match = useRouteMatch()
 
+    const [reviewShow, setReviewShow] = useState({})
 
     return(
         <div className={className}>
@@ -17,7 +21,12 @@ function MoviePage({className, children, movies, isLoading}){
             </StyledMovieList>
 
             <Route path = {`${match.url}/:movieId`}>
-                <Movie movies = {movies}/>
+                <StyledMovie movies = {movies} setReviewShow= {setReviewShow}>
+                    <StyledRatingContainer>
+                        <StyledRating/>
+                    </StyledRatingContainer>
+                </StyledMovie>
+                <StyledReview review= {reviewShow}/>
             </Route>
         </div>
     )

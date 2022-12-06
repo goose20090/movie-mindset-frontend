@@ -2,7 +2,7 @@ import React from "react";
 
 function MainAppContainer({children, className}){
     return(
-        <div>
+        <div className={className}>
             {children}
         </div>
 )}
