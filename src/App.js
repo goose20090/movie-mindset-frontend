@@ -9,7 +9,6 @@ import {useQuery} from "@tanstack/react-query";
 function App(){
 
   const {data: movies, isLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
-  console.log(movies)
 return(
     <StyledMainAppContainer>
       <StyledNavBar/> 

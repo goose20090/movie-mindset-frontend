@@ -1,18 +1,20 @@
 import React from "react";
 import useStarify from "../hooks/useStarify";
 
-function Rating({className, review}){
+function Rating({className, review, setReview}){
 
     const {rating, user} = review
 
-    const starsOfFive = useStarify(rating)
+    function handleClick(){
+        setReview(review)
+    }
 
     return(
-        <div className={className}>
+        <div className={className} onClick = {handleClick}>
            <p>
             {user.name}
             <br/>
-             {starsOfFive}
+             {useStarify(rating)}
            </p>
         </div>
     )

@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import useCommentify from "../hooks/useCommentify";
+import useStarify from "../hooks/useStarify";
 
 function Review({className, review}){
-
-    console.log(review)
-
-    const {user} = review
-
+    
+    const {user, rating} = review
     return (
         <div className={className}>
             <div id = "review-profile">
@@ -15,6 +14,7 @@ function Review({className, review}){
                 <img id = "avatar" alt = {`${user.name}'s avatar`}src={user.avatar}/>
             </div>
             <div>
+                <p>{useStarify(rating)} {useCommentify(rating)}</p>
                 <p>"{review.comment}"</p>
             </div>
         </div>
