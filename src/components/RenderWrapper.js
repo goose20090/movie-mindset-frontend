@@ -1,9 +1,9 @@
 import React from "react";
 import useRender from "../hooks/useRender";
 
-function RenderWrapper({movies, setReview}){
+function RenderWrapper({data, setShowState, url, makeNavLinksBy}){
 
-    const renderData = useRender(movies, setReview)
+    const renderData = useRender(data, setShowState, url, makeNavLinksBy)
     
     return(
         <>

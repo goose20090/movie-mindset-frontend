@@ -8,18 +8,19 @@ import {useQuery} from "@tanstack/react-query";
 
 function App(){
 
-  const {data: movies, isLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
+  const {data: movies, isLoading: moviesLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
+  const {data: users, isLoading: usersLoading} = useQuery(['fetch-users'], ()=> fetch('http://localhost:9292/users').then(res=>res.json()))
 return(
     <StyledMainAppContainer>
       <StyledNavBar/> 
     <Switch>
         <Route path = "/movies">
           <h1>Movies</h1>
-          <StyledMoviePage movies = {movies} isLoading = {isLoading}/>
+          <StyledMoviePage movies = {movies} isLoading = {moviesLoading}/>
         </Route>
         <Route path = "/users">
           <h1>Users</h1>
-          <StyledUserPage/>
+          <StyledUserPage users = {users} isLoading = {usersLoading}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>

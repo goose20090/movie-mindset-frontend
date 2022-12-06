@@ -16,7 +16,7 @@ function MoviePage({className, children, movies, isLoading}){
         <div className={className}>
             {children}
             <StyledMovieList>
-                {isLoading? <h1>Loading...</h1> : <RenderWrapper movies = {movies} setReview= {setReview}/>}
+                {isLoading? <h1>Loading...</h1> : <RenderWrapper data = {movies} setShowState= {setReview} url = "movies" makeNavLinksBy = "title"/>}
             </StyledMovieList>
 
             <Route path = {`${match.url}/:movieId`}>
