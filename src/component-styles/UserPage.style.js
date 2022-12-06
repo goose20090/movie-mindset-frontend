@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Page from "../components/Page";
+import UserPage from "../components/UserPage";
 
-export const StyledUserPage = styled(Page)`
+export const StyledUserPage = styled(UserPage)`
 `
