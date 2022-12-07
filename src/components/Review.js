@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import useCommentify from "../hooks/useCommentify";
 import useStarify from "../hooks/useStarify";
 
 function Review({className, review}){
-    
+
     const {user, rating} = review
     return (
         <div className={className}>

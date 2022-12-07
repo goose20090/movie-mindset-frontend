@@ -17,7 +17,7 @@ function Movie({className, movies, setReview}){
                 <h4>{movie.release_date}</h4>
             </div>
             <StyledRatingContainer>
-                {reviews.map((review)=><StyledRating key = {review.id} review= {review} setReview = {setReview}/>)}
+                {reviews.map((review)=><StyledRating key = {review.id} review= {review} setReview = {setReview} title= {"user"}/>)}
             </StyledRatingContainer>
         </div>
     )

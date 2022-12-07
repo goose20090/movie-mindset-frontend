@@ -8,7 +8,9 @@ import {useQuery} from "@tanstack/react-query";
 
 function App(){
 
+  // fetching movies with nested reviews and users
   const {data: movies, isLoading: moviesLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
+  // fetching users
   const {data: users, isLoading: usersLoading} = useQuery(['fetch-users'], ()=> fetch('http://localhost:9292/users').then(res=>res.json()))
 return(
     <StyledMainAppContainer>
