@@ -4,7 +4,9 @@ import List from "../components/List";
 export const StyledUserList = styled(List)`
 border: 5px solid white;
 height: fit-content;
-width: fit-content;
+
+overflow-x: hidden;
+margin: 10px;
 li{
     list-style: none;
     margin-top: 5px

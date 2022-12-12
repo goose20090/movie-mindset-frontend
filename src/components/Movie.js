@@ -16,7 +16,7 @@ function Movie({className, movies, setReview}){
                 <h4>{movie.streaming_platform}</h4>
                 <h4>{movie.release_date}</h4>
             </div>
-            <StyledRatingContainer>
+            <StyledRatingContainer id = "movie-ratings">
                 {reviews.map((review)=><StyledRating key = {review.id} review= {review} setReview = {setReview} title= {"user"}/>)}
             </StyledRatingContainer>
         </div>
