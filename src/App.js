@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import {StyledMainAppContainer} from "./component-styles/MainAppContainer.style"
 import { StyledMoviePage } from "./component-styles/MoviePage.style";
-import { StyledNavBar } from "./component-styles/NavBar.style";
+import { StyledNavBar, StyledLogin } from "./component-styles/NavBar.style";
 import { StyledUserPage } from "./component-styles/UserPage.style";
 import {useQuery} from "@tanstack/react-query";
 
@@ -12,9 +12,13 @@ function App(){
   const {data: movies, isLoading: moviesLoading} = useQuery(['fetch-movies'], ()=> fetch('http://localhost:9292/movies').then(res=>res.json()))
   // fetching users
   const {data: users, isLoading: usersLoading} = useQuery(['fetch-users'], ()=> fetch('http://localhost:9292/users').then(res=>res.json()))
+  // set the user currently logged in
+  const [currentUser, setCurrentUser]= useState({})
 return(
     <StyledMainAppContainer>
-      <StyledNavBar/> 
+      <StyledNavBar >
+        <StyledLogin users = {users} currentUser = {currentUser} setCurrentUser = {setCurrentUser}/>
+      </StyledNavBar> 
     <Switch>
         <Route path = "/movies">
           <h1>Movies</h1>
