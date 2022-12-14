@@ -5,7 +5,7 @@ import { StyledMoviePage } from "./component-styles/MoviePage.style";
 import { StyledNavBar, StyledLogin } from "./component-styles/NavBar.style";
 import { StyledUserPage } from "./component-styles/UserPage.style";
 import {useQuery} from "@tanstack/react-query";
-import ReviewsPage from "./components/ReviewsPage";
+import { StyledReviewsPage } from "./component-styles/ReviewsPage.style";
 
 function App(){
 
@@ -15,7 +15,7 @@ function App(){
   const {data: users, isLoading: usersLoading} = useQuery(['fetch-users'], ()=> fetch('http://localhost:9292/users').then(res=>res.json()))
   // set the user currently logged in
   const [currentUser, setCurrentUser]= useState("")
-return(
+  return(
     <StyledMainAppContainer>
       <StyledNavBar users = {users} currentUser = {currentUser} setCurrentUser = {setCurrentUser}/> 
     <Switch>
@@ -28,7 +28,7 @@ return(
           <StyledUserPage users = {users} isLoading = {usersLoading}/>
         </Route>
         <Route path = "/reviews">
-          <ReviewsPage currentUser = {currentUser}/>
+          <StyledReviewsPage currentUser = {currentUser} movies = {movies}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>

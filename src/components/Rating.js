@@ -14,12 +14,12 @@ function Rating({className, review, title, handleClick}){
         titleKey = 'name'
     }
 
-    function passHandleClickId(){
+    function passReviewId(){
         handleClick(review.id)
     }
     
     return(
-        <div className={className} onClick= {passHandleClickId}>
+        <div className={className} onClick= {passReviewId}>
            <p>
             {titleObj[titleKey]}
             <br/>

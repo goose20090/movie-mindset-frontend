@@ -3,7 +3,6 @@ import { StyledLogin, StyledNavLink } from "../component-styles/NavBar.style";
 
 function NavBar({className, currentUser, users, setCurrentUser}){
 
-    console.log(currentUser)
     return(
         <div className={className}>
             <StyledNavLink to = "/" exact activeStyle = {{background:"darkred"}}>Home</StyledNavLink>

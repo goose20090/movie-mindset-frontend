@@ -7,8 +7,6 @@ height: 300px;
 width: 426px;
 height: fit-content;
 border: solid white 5px;
-margin-top: 3%;
-margin-left: 1.5%;
 
 #name-and-avatar{
     display: flex;

@@ -1,7 +1,7 @@
 import React from "react"
 import { RvPgStyledRating } from "../component-styles/Rating.style"
 
-function UserProfile({className, currentUser}){
+function UserProfile({className, currentUser, handleClick}){
 
     const {reviews} = currentUser
     
@@ -14,8 +14,8 @@ function UserProfile({className, currentUser}){
             <div id = "review-count">
                 <p>{currentUser.reviews.length} reviews</p>
             </div>
+                {reviews.map((review)=> <RvPgStyledRating key = {review.id} title = {"movie"} review = {review} handleClick = {handleClick}/>)}
             <div>
-                {reviews.map((review)=> <RvPgStyledRating key = {review.id} title = {"movie"} review = {review} handleClick = {()=>{}}/>)}
             </div>
         </div>
     )
