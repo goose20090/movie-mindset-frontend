@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledEditReview } from "../component-styles/EditReview.style";
 import useStarify from "../hooks/useStarify";
 
 function ReviewShowHub({className, currentReview, isEditing, setIsEditing}){
@@ -16,7 +17,7 @@ function ReviewShowHub({className, currentReview, isEditing, setIsEditing}){
                 <p> Released {movie.release_date}</p>
             </div>
             {isEditing?
-             null
+             <StyledEditReview currentReview = {currentReview}/>
              :
              <div id ="review-content">
                 <p>Your Rating: {stars} </p>

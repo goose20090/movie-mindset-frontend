@@ -3,6 +3,8 @@ import StarRating from "../components/StarRating";
 
 export const StyledStarRating = styled(StarRating)`
 
+display: inline;
+
 button {
   background-color: transparent;
   border: none;
