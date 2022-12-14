@@ -15,7 +15,7 @@ function UserPage({className, children, isLoading, users}){
                 {isLoading? <h1>Loading...</h1> : <RenderWrapper data = {users} setShowState= {setReview} url = "users" makeNavLinksBy= "name"/>}
             </StyledUserList>
             <Route path = {`${match.url}/:userId`}>
-                {/* <StyledUser users = {users} setReview = {setReview}/> */}
+                <StyledUser users = {users} setReview = {setReview}/>
                 <StyledUserReviewShow review={review} users = {users}/>
             </Route>
         </div>

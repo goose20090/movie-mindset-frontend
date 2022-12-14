@@ -3,7 +3,7 @@ import {StyledMovieList} from "../component-styles/MovieList.style"
 import { useRouteMatch, Route} from "react-router-dom";
 import RenderWrapper from "./RenderWrapper";
 import { StyledMovie } from "../component-styles/Movie.style";
-import { StyledMovieReviewShow } from "../component-styles/MovieReviewShow.style";
+import { StyledReviewCapsule } from "../component-styles/ReviewCapsule.style";
 
 function MoviePage({className, children, movies, isLoading}){
 
@@ -19,7 +19,7 @@ function MoviePage({className, children, movies, isLoading}){
 
             <Route path = {`${match.url}/:movieId`}>
                 <StyledMovie movies = {movies} setReview = {setReview}/>
-                <StyledMovieReviewShow review = {review}/>
+                <StyledReviewCapsule review = {review}/>
             </Route>
         </div>
     )

@@ -28,7 +28,6 @@ return(
           <StyledUserPage users = {users} isLoading = {usersLoading}/>
         </Route>
         <Route path = "/reviews">
-          <h1>{currentUser.name}'s Reviews</h1>
           <ReviewsPage currentUser = {currentUser}/>
         </Route>
         <Route exact path = "/">
