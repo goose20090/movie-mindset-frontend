@@ -16,7 +16,7 @@ function User({className, users, setReview}){
                 <p>{user.reviews.length} reviews</p>
             </div>
             <div id = "ratings-container">
-            {user.reviews.map((review)=> <StyledRating key = {review.id} review = {review} setReview = {setReview}title= {"movie"}/>)}
+            {/* {user.reviews.map((review)=> <StyledRating key = {review.id} review = {review} setReview = {setReview}title= {"movie"}/>)} */}
             </div>
          
         </div>

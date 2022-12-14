@@ -1,7 +1,7 @@
 import React from "react";
 import useStarify from "../hooks/useStarify";
 
-function Rating({className, review, title, setReview}){
+function Rating({className, review, title, handleClick}){
 
     const {rating} = review
     const titleObj = review[`${title}`] 
@@ -13,15 +13,13 @@ function Rating({className, review, title, setReview}){
     if (title == 'user'){
         titleKey = 'name'
     }
-    
-    function handleClick(){
-        setReview(review)
+
+    function passHandleClickId(){
+        handleClick(review.id)
     }
-
-
-
+    
     return(
-        <div className={className} onClick = {handleClick}>
+        <div className={className} onClick= {passHandleClickId}>
            <p>
             {titleObj[titleKey]}
             <br/>
