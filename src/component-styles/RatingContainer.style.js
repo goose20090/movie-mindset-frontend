@@ -5,6 +5,5 @@ export const StyledRatingContainer = styled(MovieRatingContainer)`
 
 display: flexbox;
 flex-wrap: wrap;
-border: solid white 5px;
 
 `

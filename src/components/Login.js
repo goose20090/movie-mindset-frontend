@@ -11,6 +11,7 @@ function Login({currentUser, setCurrentUser, users, className}){
 
     function handleLogout(e){
         setLoggedIn(!loggedIn)
+        setCurrentUser(false)
     }
     return(
         <div className={className}>
@@ -21,10 +22,10 @@ function Login({currentUser, setCurrentUser, users, className}){
             </>
             :
             <div>
-                <label for= "login">Login: </label>
+                <label htmlFor= "login">Login: </label>
                 <select id = "login" onChange = {handleLogin}>
                     <option value = "">Login</option>
-                    {users.map((user)=> <option key = {user.id} value = {user.name}>{user.name}</option>)}
+                    {users? users.map((user)=> <option key = {user.id} value = {user.name}>{user.name}</option>): null}
                 </select>
             </div>
             }
