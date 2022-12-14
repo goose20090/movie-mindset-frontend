@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
-import EditReview from "./EditReview";
-import UserReview from "./UserReview";
+
 
 function UserReviewShow({className, review, users}){
 
@@ -29,7 +28,7 @@ function UserReviewShow({className, review, users}){
     return(
         <div className={className}>
             <h1>{user.name}'s Review of {movie.title}</h1>
-            {isEditing? <EditReview reviewContent = {reviewContent}/>: <UserReview user = {user} review = {review} setIsEditing= {setIsEditing}/>}
+            {/* {isEditing? <EditReview reviewContent = {reviewContent}/>: <UserReview user = {user} review = {review} setIsEditing= {setIsEditing}/>} */}
     </div>
     )
 }

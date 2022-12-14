@@ -16,7 +16,7 @@ function UserPage({className, children, isLoading, users}){
             </StyledUserList>
             <Route path = {`${match.url}/:userId`}>
                 <StyledUser users = {users} setReview = {setReview}/>
-                <StyledUserReviewShow review={review} users = {users}/>
+                {/* <StyledUserReviewShow review={review} users = {users}/> */}
             </Route>
         </div>
     )

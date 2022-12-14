@@ -1,9 +1,13 @@
 import React from "react";
 import useStarify from "../hooks/useStarify";
 
-function ReviewShowHub({className, currentReview}){
+function ReviewShowHub({className, currentReview, isEditing, setIsEditing}){
+    
 
+    // destructure movie from currentReview
     const {movie} = currentReview
+    const stars = useStarify(currentReview.rating)
+
 
     return(
         <div className={className}>
@@ -11,12 +15,15 @@ function ReviewShowHub({className, currentReview}){
                 <h2>{movie.title}</h2>
                 <p> Released {movie.release_date}</p>
             </div>
-            <div id ="review-content">
-                <p>Your Rating: {useStarify(currentReview.rating)} </p>
+            {isEditing?
+             null
+             :
+             <div id ="review-content">
+                <p>Your Rating: {stars} </p>
                 <p>Your Comment: {currentReview.comment}</p>
-            </div>
+            </div>}
             <div id = "options">
-                <button>Edit</button>
+                <button onClick={()=>{setIsEditing((isEditing)=> !isEditing)}}>Edit</button>
                 <button>Delete</button>
             </div>
         </div>
