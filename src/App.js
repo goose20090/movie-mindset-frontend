@@ -14,7 +14,7 @@ function App(){
   // fetching users
   const {data: users, isLoading: usersLoading} = useQuery(['fetch-users'], ()=> fetch('http://localhost:9292/users').then(res=>res.json()))
   // set the user currently logged in
-  const [currentUser, setCurrentUser]= useState("")
+  const [currentUser, setCurrentUser]= useState(null)
   return(
     <StyledMainAppContainer>
       <StyledNavBar users = {users} currentUser = {currentUser} setCurrentUser = {setCurrentUser}/> 

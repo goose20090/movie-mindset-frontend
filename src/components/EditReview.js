@@ -7,8 +7,21 @@ function EditReview({className, currentReview}){
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log("rating: ", rating )
-        console.log("comment: ", comment)
+        // console.log("rating: ", rating )
+        // console.log("comment: ", comment)
+
+        fetch(`http://localhost:9292/reviews/${currentReview.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                comment: comment,
+                rating: rating,
+            }),
+        })
+        .then((res)=>res.json())
+        .then((updatedReview)=> console.log(updatedReview))
     }
     return(
         <div className={className}>
