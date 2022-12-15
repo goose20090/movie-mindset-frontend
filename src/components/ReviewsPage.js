@@ -20,7 +20,7 @@ function ReviewsPage({currentUser, className}){
     return (
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {findReview}/>
-            { currentReview?<StyledReviewShowHub currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>: <h2>(click a review for more info and options)</h2>}
+            { currentReview?<StyledReviewShowHub setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>: <h2>(click a review for more info and options)</h2>}
         </div>
     )
 }

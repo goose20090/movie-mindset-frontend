@@ -2,7 +2,7 @@ import React from "react";
 import { StyledEditReview } from "../component-styles/EditReview.style";
 import useStarify from "../hooks/useStarify";
 
-function ReviewShowHub({className, currentReview, isEditing, setIsEditing}){
+function ReviewShowHub({className, currentReview, isEditing, setIsEditing, setCurrentReview}){
     
 
     // destructure movie from currentReview
@@ -17,7 +17,7 @@ function ReviewShowHub({className, currentReview, isEditing, setIsEditing}){
                 <p> Released {movie.release_date}</p>
             </div>
             {isEditing?
-             <StyledEditReview currentReview = {currentReview}/>
+             <StyledEditReview setIsEditing = {setIsEditing} currentReview = {currentReview} setCurrentReview= {setCurrentReview}/>
              :
              <div id ="review-content">
                 <p>Your Rating: {stars} </p>

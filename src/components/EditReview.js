@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { StyledStarRating } from "../component-styles/StarRating.style";
 
-function EditReview({className, currentReview}){
+function EditReview({className, currentReview, setCurrentReview, setIsEditing}){
     const[comment, setComment] = useState(currentReview.comment)
     const [rating, setRating] = useState(currentReview.rating)
 
     function handleSubmit(e){
         e.preventDefault();
-        // console.log("rating: ", rating )
-        // console.log("comment: ", comment)
 
         fetch(`http://localhost:9292/reviews/${currentReview.id}`, {
             method: 'PATCH',
@@ -21,7 +19,12 @@ function EditReview({className, currentReview}){
             }),
         })
         .then((res)=>res.json())
-        .then((updatedReview)=> console.log(updatedReview))
+        .then((updatedReview)=> {
+            console.log(updatedReview)
+            setCurrentReview(updatedReview)
+            setIsEditing(false)
+
+        })
     }
     return(
         <div className={className}>
