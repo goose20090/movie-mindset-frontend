@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyledStarRating } from "../component-styles/StarRating.style";
 
-function EditReview({className, currentReview, setCurrentReview, setIsEditing}){
+function EditReview({className, currentReview, onUpdateReview}){
     const[comment, setComment] = useState(currentReview.comment)
     const [rating, setRating] = useState(currentReview.rating)
 
@@ -19,12 +19,8 @@ function EditReview({className, currentReview, setCurrentReview, setIsEditing}){
             }),
         })
         .then((res)=>res.json())
-        .then((updatedReview)=> {
-            console.log(updatedReview)
-            setCurrentReview(updatedReview)
-            setIsEditing(false)
-
-        })
+        // as most values in app derive their values from reviews included in a user object, a user object with the new review has been returned.
+        .then((updatedUserObj)=> onUpdateReview(updatedUserObj))
     }
     return(
         <div className={className}>
