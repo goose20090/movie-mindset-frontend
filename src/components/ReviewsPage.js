@@ -21,13 +21,14 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies}){
     function onUpdateReview(updatedReviewObj){
         // Say that the editing is finished
         setIsEditing(!isEditing)
+
         // Update current Review in ReviewShowHub
         let updatedCurrentReview = currentReview
         updatedCurrentReview.rating = updatedReviewObj.rating
         updatedCurrentReview.comment = updatedReviewObj.comment
         setCurrentReview(updatedCurrentReview)
 
-        // Pass up to higher component to implement change across other states
+        // // Pass up to higher component to implement change across other states
         handleReviewUpdate(updatedReviewObj)
     }
 
@@ -57,7 +58,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies}){
             <StyledReviewCreateHub movies = {movies}/>
             :
             isRUDing?
-            <StyledReviewRUDHub setIsRUDing = {setIsRUDing} setonUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
+            <StyledReviewRUDHub setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
             : 
             <div>
                 <h2>

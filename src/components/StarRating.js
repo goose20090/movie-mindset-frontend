@@ -7,6 +7,7 @@ function StarRating({className, rating, setRating}){
 
     return(
         <div className= {className}>
+          <label>Your Rating</label>
       {[...Array(5)].map((star, index) => {
         index += 1;
         return (
