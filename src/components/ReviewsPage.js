@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style";
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
 
-function ReviewsPage({currentUser, className, handleReviewUpdate}){
-
-    // state for which Review is shown in ReviewShowHub
-    const [currentReview, setCurrentReview] = useState(false)
+function ReviewsPage({currentUser, className, handleReviewUpdate, movies}){
 
     // state for whether a review is currently being read, updated or deleted
     const [isRUDing, setIsRUDing] = useState(false)
+
+    // state for which Review is shown read, updated or deleted
+    const [currentReview, setCurrentReview] = useState(false)
+
 
     // state for whether that Review is being currently edited
     const [isEditing, setIsEditing] = useState(false)
@@ -52,23 +54,18 @@ function ReviewsPage({currentUser, className, handleReviewUpdate}){
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {showClickedReview}/>
             {isCreating? 
-            <h1>Create Hub Here</h1>
+            <StyledReviewCreateHub movies = {movies}/>
             :
             isRUDing?
             <StyledReviewRUDHub setIsRUDing = {setIsRUDing} setonUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
             : 
             <div>
-                <h2>Options</h2>
-                <ul>
-                    <li>
-                        Click a Rating for more information/options
-                    </li>
-                    <li>
-                        Click <span onClick = {showCreateHub} id = "create-hub-link">here</span> to write a new Review!
-                    </li>
-                </ul>
-            </div>
-            }
+                <h2>
+                    Click one of your ratings for more info/options, or click  
+                        <span onClick = {showCreateHub} id = "create-hub-link"> here </span> 
+                    to write a new one!
+                </h2>
+            </div>}
         </div>
     )
 }

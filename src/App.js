@@ -51,7 +51,7 @@ function App(){
           <StyledMoviePage movies = {movies}/>
         </Route>
         <Route path = "/reviews">
-          <StyledReviewsPage currentUser = {currentUser} movies = {movies} handleReviewUpdate = {handleReviewUpdate}/>
+          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {handleReviewUpdate}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>
