@@ -36,7 +36,7 @@ function MovieSearcher({className, movies, handleMovieClick}){
             </h2>
             <div id = "show-movies">
             <form>
-                <input type={"text"} placeholder= "search for a movie e.g. Fargo" value = {formData} onChange= {handleChange}/>
+                <input id = 'search-bar' type={"text"} placeholder= "search for a movie e.g. Fargo" value = {formData} onChange= {handleChange}/>
             </form>
                 <ul>
                     {movieShowing.map((movie)=> <li key = {movie.id} onClick= {()=>{onMovieClick(movie.id)}}>{movie.title}</li>)}

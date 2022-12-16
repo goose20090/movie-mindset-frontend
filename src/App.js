@@ -33,12 +33,44 @@ function App(){
     let moviesCopy = [...movies]
 
     // update specific review content in movieOj
-    let movieObj = moviesCopy.find((movie)=> movie.id === updatedReviewObj.movie_id)
-    let currentReviewObj = movieObj.reviews.find((review)=> review.id === updatedReviewObj.id)
-    currentReviewObj.rating = updatedReviewObj.rating
-    currentReviewObj.comment = updatedReviewObj.comment
 
-    setMovies(moviesCopy)
+    let moviesArr = [...movies].map((movie=>{
+      if(movie.id === updatedReviewObj.movie_id){
+
+        let reviewToUpdate = movie.reviews.find((review)=> review.id ===updatedReviewObj.id)
+
+        reviewToUpdate.rating = updatedReviewObj.rating
+        reviewToUpdate.comment = updatedReviewObj.comment
+
+        return movie
+      }
+      else return movie
+    }))
+    setMovies(moviesArr)
+  }
+
+  function handleMoviesState(newReview){
+
+    let moviesArr = [...movies]
+
+    let reviewedMovie = moviesArr.find((movie)=> movie.id === newReview.movie_id)
+
+    reviewedMovie.reviews.push(newReview)
+
+    setMovies(moviesArr)
+
+    handleUsersState(newReview)
+ 
+  }
+
+  function handleUsersState(newReview){
+    let usersArr = [...users]
+
+    let user = usersArr.find((iteratedUser)=> iteratedUser.id === newReview.user_id)
+
+    user.reviews.push(newReview)
+
+    setUsers(usersArr)
   }
 
   
@@ -51,7 +83,7 @@ function App(){
           <StyledMoviePage movies = {movies}/>
         </Route>
         <Route path = "/reviews">
-          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {handleReviewUpdate}/>
+          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {handleReviewUpdate} handleMoviesState = {handleMoviesState}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>

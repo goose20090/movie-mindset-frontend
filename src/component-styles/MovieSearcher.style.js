@@ -20,7 +20,7 @@ li{
     cursor: pointer;
 }
 
-input{
+#search-bar{
     width: 300px;
     position: absolute;
 }

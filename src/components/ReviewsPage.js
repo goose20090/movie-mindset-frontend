@@ -3,7 +3,7 @@ import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
 
-function ReviewsPage({currentUser, className, handleReviewUpdate, movies}){
+function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleMoviesState}){
 
     // state for whether a review is currently being read, updated or deleted
     const [isRUDing, setIsRUDing] = useState(false)
@@ -51,11 +51,23 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies}){
     function showCreateHub(){
         setIsCreating(true)
     }
+
+    function handleAddReview(newReview){
+
+        handleMoviesState(newReview)
+    }
+
+
+
+
+
+
+
     return (
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {showClickedReview}/>
             {isCreating? 
-            <StyledReviewCreateHub movies = {movies}/>
+            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} handleAddReview = {handleAddReview}/>
             :
             isRUDing?
             <StyledReviewRUDHub setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>

@@ -27,7 +27,6 @@ function EditReview({className, currentReview, onUpdateReview}){
         <div className={className}>
             <StyledStarRating rating={rating} setRating = {setRating}/>
             <StyledCommentForm comment = {comment} setComment = {setComment} handleSubmit = {handleSubmit}/>
-
         </div>
     )
 }
