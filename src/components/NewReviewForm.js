@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyledCommentForm } from "../component-styles/CommentForm.style";
 import { StyledStarRating } from "../component-styles/StarRating.style";
 
-function NewReviewForm({className, reviewingMovie, handleAddReview, currentUser}){
+function NewReviewForm({className, reviewingMovie, onAddReview, currentUser}){
 
     const [rating, setRating] = useState(5)
     const [comment, setComment] = useState('')
@@ -22,7 +22,7 @@ function NewReviewForm({className, reviewingMovie, handleAddReview, currentUser}
         }),
         })
         .then(res=>res.json())
-        .then(res=> handleAddReview(res))
+        .then(res=> onAddReview(res))
     }
 
     return(

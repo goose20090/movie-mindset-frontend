@@ -3,32 +3,22 @@ import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
 
-function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleMoviesState}){
+function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview}){
 
-    // state for whether a review is currently being read, updated or deleted
-    const [isRUDing, setIsRUDing] = useState(false)
-
-    // state for which Review is shown read, updated or deleted
     const [currentReview, setCurrentReview] = useState(false)
-
-
-    // state for whether that Review is being currently edited
+    const [isRUDing, setIsRUDing] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
-
-    // state for whether a review is currently being created
     const [isCreating, setIsCreating] = useState(false)
 
     function onUpdateReview(updatedReviewObj){
-        // Say that the editing is finished
+
         setIsEditing(!isEditing)
 
-        // Update current Review in ReviewShowHub
         let updatedCurrentReview = currentReview
         updatedCurrentReview.rating = updatedReviewObj.rating
         updatedCurrentReview.comment = updatedReviewObj.comment
         setCurrentReview(updatedCurrentReview)
 
-        // // Pass up to higher component to implement change across other states
         handleReviewUpdate(updatedReviewObj)
     }
 
@@ -47,19 +37,23 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
         setIsEditing(false)
     }
 
+    function onAddReview(newReview){
+        // make the current Review the new Review
 
-    function showCreateHub(){
-        setIsCreating(true)
+        setCurrentReview(newReview)
+
+        // navigate to the RUDHub
+
+        setIsCreating(false)
+        setIsRUDing(true)
+
+        handleAddReview(newReview)
     }
 
-    function handleAddReview(newReview){
+    function onDelete(e){
+        console.log(e)
 
-        handleMoviesState(newReview)
     }
-
-
-
-
 
 
 
@@ -67,15 +61,15 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {showClickedReview}/>
             {isCreating? 
-            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} handleAddReview = {handleAddReview}/>
+            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} onAddReview = {onAddReview}/>
             :
             isRUDing?
-            <StyledReviewRUDHub setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
+            <StyledReviewRUDHub onDelete = {onDelete} setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
             : 
             <div>
                 <h2>
                     Click one of your ratings for more info/options, or click  
-                        <span onClick = {showCreateHub} id = "create-hub-link"> here </span> 
+                        <span onClick = {()=> {setIsCreating(true)}} id = "create-hub-link"> here </span> 
                     to write a new one!
                 </h2>
             </div>}

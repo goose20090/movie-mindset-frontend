@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { StyledMovieSearcher } from "../component-styles/MovieSearcher.style";
 import { StyledNewReviewForm } from "../component-styles/NewReviewForm.style";
 
-function ReviewCreateHub({className, movies, handleAddReview, currentUser}){
+function ReviewCreateHub({className, movies, onAddReview, currentUser}){
 
     const [isSearching, setIsSearching] = useState(true)
     const [reviewingMovie, setReviewingMovie] = useState("")
@@ -18,7 +18,7 @@ function ReviewCreateHub({className, movies, handleAddReview, currentUser}){
             {isSearching?
             <StyledMovieSearcher handleMovieClick = {handleMovieClick} movies = {movies}/>
             : 
-            <StyledNewReviewForm currentUser = {currentUser} reviewingMovie= {reviewingMovie} handleAddReview = {handleAddReview}/>}
+            <StyledNewReviewForm currentUser = {currentUser} reviewingMovie= {reviewingMovie} onAddReview = {onAddReview}/>}
         </div>
     )
 }

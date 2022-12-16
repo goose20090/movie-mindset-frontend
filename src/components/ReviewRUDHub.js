@@ -2,7 +2,7 @@ import React from "react";
 import { StyledEditReview } from "../component-styles/EditReview.style";
 import useStarify from "../hooks/useStarify";
 
-function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEditing, onUpdateReview}){
+function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEditing, onUpdateReview, onDelete}){
     
 
     // destructure movie from currentReview
@@ -10,15 +10,15 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
     const stars = useStarify(currentReview.rating)
 
 
-    function hideRUDHub(){
-        setIsRUDing(false)
+    function handleClick(e){
+        onDelete(e)
     }
     return(
         <div className={className}>
             <div id = "movie-info">
                 <h2>{movie.title}</h2>
                 <p> Released {movie.release_date}</p>
-                <h4 id = "close-button" onClick = {hideRUDHub}>X</h4>
+                <h4 id = "close-button" onClick = {()=>setIsRUDing(false)}>X</h4>
             </div>
             {isEditing?
              <StyledEditReview currentReview = {currentReview} onUpdateReview = {onUpdateReview}/>
@@ -29,7 +29,7 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
             </div>}
             <div id = "options">
                 <button onClick={()=>{setIsEditing((isEditing)=> !isEditing)}}>Edit</button>
-                <button>Delete</button>
+                <button onClick= {handleClick}>Delete</button>
             </div>
         </div>
     )

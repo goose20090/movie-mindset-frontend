@@ -27,12 +27,9 @@ function App(){
   const [currentUser, setCurrentUser]= useState(null)
 
 
+  // Event handlers for review PATCH requests
 
-  function handleReviewUpdate(updatedReviewObj){
-    
-    let moviesCopy = [...movies]
-
-    // update specific review content in movieOj
+  function updateMoviesState(updatedReviewObj){
 
     let moviesArr = [...movies].map((movie=>{
       if(movie.id === updatedReviewObj.movie_id){
@@ -49,7 +46,14 @@ function App(){
     setMovies(moviesArr)
   }
 
-  function handleMoviesState(newReview){
+  // Even handlers for review POST requests
+
+  function handleAddReview(newReview){
+    addToMoviesState(newReview)
+    addToUsersState(newReview)
+  }
+
+  function addToMoviesState(newReview){
 
     let moviesArr = [...movies]
 
@@ -58,12 +62,9 @@ function App(){
     reviewedMovie.reviews.push(newReview)
 
     setMovies(moviesArr)
-
-    handleUsersState(newReview)
- 
   }
 
-  function handleUsersState(newReview){
+  function addToUsersState(newReview){
     let usersArr = [...users]
 
     let user = usersArr.find((iteratedUser)=> iteratedUser.id === newReview.user_id)
@@ -83,7 +84,7 @@ function App(){
           <StyledMoviePage movies = {movies}/>
         </Route>
         <Route path = "/reviews">
-          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {handleReviewUpdate} handleMoviesState = {handleMoviesState}/>
+          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>
