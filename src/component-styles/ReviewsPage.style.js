@@ -11,6 +11,11 @@ h2{
     margin-top: 5%;
 }
 
+#create-hub-link{
+    text-decoration: underline;
+    cursor: pointer;
+
+}
 
 
 `
