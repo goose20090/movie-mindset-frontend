@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import {StyledMainAppContainer} from "./component-styles/MainAppContainer.style"
 import { StyledMoviePage } from "./component-styles/MoviePage.style";
 import { StyledNavBar } from "./component-styles/NavBar.style";
-import { StyledUserPage } from "./component-styles/UserPage.style";
 import { StyledReviewsPage } from "./component-styles/ReviewsPage.style";
 
 function App(){
@@ -12,6 +11,7 @@ function App(){
   // state for all movies
   const [movies, setMovies] = useState([])
 
+  // Fetching movies and users from backend and setting relevant states as response values
   useEffect(()=>{
     fetch('http://localhost:9292/movies')
     .then(res=>res.json())
@@ -23,23 +23,22 @@ function App(){
 
   }, [])
   
-  // set the user currently logged in
+  // State for user currently logged in
   const [currentUser, setCurrentUser]= useState(null)
 
-  // state for all users
 
 
-  function handleReviewUpdate(updatedUserObj){
-    const updatedUsers = users.map((user)=> {
-      if (user.id === updatedUserObj.id){
-        return updatedUserObj
-      }
-      else {
-        return user;
-      }
-    })
-    setUsers(updatedUsers)
-    setCurrentUser(updatedUserObj)
+  function handleReviewUpdate(updatedReviewObj){
+    
+    let moviesCopy = [...movies]
+
+    // update specific review content in movieOj
+    let movieObj = moviesCopy.find((movie)=> movie.id === updatedReviewObj.movie_id)
+    let currentReviewObj = movieObj.reviews.find((review)=> review.id === updatedReviewObj.id)
+    currentReviewObj.rating = updatedReviewObj.rating
+    currentReviewObj.comment = updatedReviewObj.comment
+
+    setMovies(moviesCopy)
   }
 
   
@@ -50,10 +49,6 @@ function App(){
         <Route path = "/movies">
           <h1>Movies</h1>
           <StyledMoviePage movies = {movies}/>
-        </Route>
-        <Route path = "/users">
-          <h1>Users</h1>
-          <StyledUserPage users = {users}/>
         </Route>
         <Route path = "/reviews">
           <StyledReviewsPage currentUser = {currentUser} movies = {movies} handleReviewUpdate = {handleReviewUpdate}/>

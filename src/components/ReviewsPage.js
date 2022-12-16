@@ -10,10 +10,17 @@ function ReviewsPage({currentUser, className, handleReviewUpdate}){
     // state for whether that Review is being currently edited
     const [isEditing, setIsEditing] = useState(false)
 
-    function onUpdateReview(updatedUserObj){
+    function onUpdateReview(updatedReviewObj){
+        // Say that the editing is finished
         setIsEditing(!isEditing)
-        handleReviewUpdate(updatedUserObj)
-        setCurrentReview(updatedUserObj.reviews.find((review)=> review.id === currentReview.id))
+        // Update current Review in ReviewShowHub
+        let updatedCurrentReview = currentReview
+        updatedCurrentReview.rating = updatedReviewObj.rating
+        updatedCurrentReview.comment = updatedReviewObj.comment
+        setCurrentReview(updatedCurrentReview)
+
+        // Pass up to higher component to implement change across other states
+        handleReviewUpdate(updatedReviewObj)
     }
 
     function findReview(id){

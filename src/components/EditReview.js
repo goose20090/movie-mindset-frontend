@@ -19,8 +19,7 @@ function EditReview({className, currentReview, onUpdateReview}){
             }),
         })
         .then((res)=>res.json())
-        // as most values in app derive their values from reviews included in a user object, a user object with the new review has been returned.
-        .then((updatedUserObj)=> onUpdateReview(updatedUserObj))
+        .then((updatedReviewObj)=> onUpdateReview(updatedReviewObj))
     }
     return(
         <div className={className}>
