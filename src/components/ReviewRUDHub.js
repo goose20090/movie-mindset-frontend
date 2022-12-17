@@ -10,8 +10,8 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
     const stars = useStarify(currentReview.rating)
 
 
-    function handleClick(e){
-        onDelete(e)
+    function handleClick(){
+        onDelete(currentReview)
     }
     return(
         <div className={className}>

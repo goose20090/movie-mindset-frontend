@@ -51,6 +51,7 @@ function App(){
   function handleAddReview(newReview){
     addToMoviesState(newReview)
     addToUsersState(newReview)
+    setCurrentUser(users.find((user)=> user.id === newReview.user_id))
   }
 
   function addToMoviesState(newReview){
@@ -66,12 +67,27 @@ function App(){
 
   function addToUsersState(newReview){
     let usersArr = [...users]
-
     let user = usersArr.find((iteratedUser)=> iteratedUser.id === newReview.user_id)
 
     user.reviews.push(newReview)
 
     setUsers(usersArr)
+  }
+
+  function handleDelete(deletedReview){
+    let moviesArr = [...movies]
+
+    let movie = moviesArr.find((movie)=> movie.id === deletedReview.movie_id)
+    movie.reviews = movie.reviews.filter((review)=> review.id !== deletedReview.id)
+    setMovies(moviesArr)
+
+    let usersArr = [...users]
+
+    let user = usersArr.find((user)=> user.id === deletedReview.user_id)
+    user.reviews = user.reviews.filter((review)=> review.id !== deletedReview.id)
+    setUsers(usersArr)
+
+    setCurrentUser(users.find((user)=> user.id === deletedReview.user_id))
   }
 
   
@@ -84,7 +100,7 @@ function App(){
           <StyledMoviePage movies = {movies}/>
         </Route>
         <Route path = "/reviews">
-          <StyledReviewsPage movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview}/>
+          <StyledReviewsPage handleDelete = {handleDelete} movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>

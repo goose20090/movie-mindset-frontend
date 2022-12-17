@@ -17,5 +17,10 @@ h2{
 
 }
 
+#initial-page{
+    border: solid 5px white;
+    width: 426px;
+    height: fit-content;
+}
 
 `

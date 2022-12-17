@@ -4,11 +4,10 @@ import MovieSearcher from "../components/MovieSearcher";
 export const StyledMovieSearcher = styled(MovieSearcher)`
 
 #show-movies{
-    border-bottom: solid 5px white;
     border-top: solid 5px white;
-    height: 250px;
     overflow: scroll;
     overflow-x: hidden;
+    height: 48vh;
 
 }
 

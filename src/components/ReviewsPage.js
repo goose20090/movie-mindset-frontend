@@ -3,7 +3,11 @@ import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
 
-function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview}){
+function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview, handleDelete}){
+
+    // NOTE- Current User controls which user and user's ratings are shown in the left container on this page 
+    
+    // NOTE- Current Review controls which review is contained in the right container (when isRUDing is true)
 
     const [currentReview, setCurrentReview] = useState(false)
     const [isRUDing, setIsRUDing] = useState(false)
@@ -50,8 +54,9 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
         handleAddReview(newReview)
     }
 
-    function onDelete(e){
-        console.log(e)
+    function onDelete(deletedReview){
+        setIsRUDing(false)
+        handleDelete(deletedReview)
 
     }
 
@@ -66,7 +71,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
             isRUDing?
             <StyledReviewRUDHub onDelete = {onDelete} setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
             : 
-            <div>
+            <div id = "initial-page">
                 <h2>
                     Click one of your ratings for more info/options, or click  
                         <span onClick = {()=> {setIsCreating(true)}} id = "create-hub-link"> here </span> 
