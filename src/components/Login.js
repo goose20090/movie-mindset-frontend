@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
 
 function Login({currentUser, setCurrentUser, users, className}){
     const [loggedIn, setLoggedIn] = useState(false)
@@ -22,6 +23,7 @@ function Login({currentUser, setCurrentUser, users, className}){
             </>
             :
             <div>
+                <StyledSignUpForm/>
                 <label htmlFor= "login">Login: </label>
                 <select id = "login" onChange = {handleLogin}>
                     <option value = "">Login</option>
