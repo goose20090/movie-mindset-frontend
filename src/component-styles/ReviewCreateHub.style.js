@@ -8,6 +8,13 @@ width: 426px;
 height: fit-content;
 padding-bottom: 25px;
 
+#close-button{
+    float: right;
+    margin-top: -17%;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
 
 
 `

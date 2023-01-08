@@ -18,7 +18,7 @@ function ReviewCreateHub({className, movies, onAddReview, currentUser}){
             {isSearching?
             <StyledMovieSearcher handleMovieClick = {handleMovieClick} movies = {movies}/>
             : 
-            <StyledNewReviewForm currentUser = {currentUser} reviewingMovie= {reviewingMovie} onAddReview = {onAddReview}/>}
+            <StyledNewReviewForm setIsSearching = {setIsSearching} currentUser = {currentUser} reviewingMovie= {reviewingMovie} onAddReview = {onAddReview}/>}
         </div>
     )
 }
