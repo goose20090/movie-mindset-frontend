@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
 
-function Login({currentUser, setCurrentUser, users, className}){
+function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}){
     const [loggedIn, setLoggedIn] = useState(false)
+
+    const history = useHistory();
 
     function handleLogin(e){
         const loggedInUser = users.find((user)=> user.name === e.target.value)
@@ -11,8 +14,31 @@ function Login({currentUser, setCurrentUser, users, className}){
     }
 
     function handleLogout(e){
+        if (history.location.pathname === "/reviews"){
+            history.push("/");
+        }
         setLoggedIn(!loggedIn)
         setCurrentUser(false)
+    }
+
+    function handleSignUpSubmit(newUser){
+        fetch('http://localhost:9292/users', {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: `${newUser}`
+        }),
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            setCurrentUser(res)
+            setLoggedIn(!loggedIn)
+            handleAddToUsers(res)
+        })
+
+    
     }
     return(
         <div className={className}>
@@ -23,7 +49,7 @@ function Login({currentUser, setCurrentUser, users, className}){
             </>
             :
             <div>
-                <StyledSignUpForm/>
+                <StyledSignUpForm handleSignUpSubmit = {handleSignUpSubmit}/>
                 <label htmlFor= "login">Login: </label>
                 <select id = "login" onChange = {handleLogin}>
                     <option value = "">Login</option>

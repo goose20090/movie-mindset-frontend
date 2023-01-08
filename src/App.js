@@ -54,6 +54,14 @@ function App(){
     setCurrentUser(users.find((user)=> user.id === newReview.user_id))
   }
 
+  function handleAddToUsers(newUser){
+    let usersArr = [...users]
+    console.log(usersArr)
+    usersArr.push(newUser)
+    console.log(usersArr)
+    setUsers(usersArr)
+
+  }
   function addToMoviesState(newReview){
 
     let moviesArr = [...movies]
@@ -93,7 +101,7 @@ function App(){
   
   return(
     <StyledMainAppContainer>
-      <StyledNavBar users = {users} currentUser = {currentUser} setCurrentUser = {setCurrentUser}/> 
+      <StyledNavBar users =  {users} currentUser = {currentUser} setCurrentUser = {setCurrentUser} handleAddToUsers= {handleAddToUsers}/> 
     <Switch>
         <Route path = "/movies">
           <h1>Movies</h1>
