@@ -3,7 +3,7 @@ import { StyledMovieCreater } from "../component-styles/MovieCreater.style";
 import { StyledMovieSearcher } from "../component-styles/MovieSearcher.style";
 import { StyledNewReviewForm } from "../component-styles/NewReviewForm.style";
 
-function ReviewCreateHub({className, movies, onAddReview, currentUser, setIsRUDing, setIsCreatingReview}){
+function ReviewCreateHub({className, movies, onAddReview, currentUser, setIsRUDing, setIsCreatingReview, handleAddMovie}){
 
     const [isSearching, setIsSearching] = useState(true)
     const [isCreatingMovie, setIsCreatingMovie] = useState(false)
@@ -18,7 +18,7 @@ function ReviewCreateHub({className, movies, onAddReview, currentUser, setIsRUDi
     return(
         <div className={className}>
             {isSearching? 
-                isCreatingMovie? <StyledMovieCreater setIsCreatingMovie= {setIsCreatingMovie}/>:
+                isCreatingMovie? <StyledMovieCreater setIsCreatingMovie= {setIsCreatingMovie} handleAddMovie= {handleAddMovie}/>:
                 <StyledMovieSearcher setIsRUDing={setIsRUDing} handleMovieClick = {handleMovieClick} movies = {movies} setIsSearching= {setIsSearching} setIsCreatingMovie = {setIsCreatingMovie} setIsCreatingReview = {setIsCreatingReview}/>
             : 
             <StyledNewReviewForm setIsSearching = {setIsSearching} currentUser = {currentUser} reviewingMovie= {reviewingMovie} onAddReview = {onAddReview}/>}

@@ -46,6 +46,14 @@ function App(){
     setMovies(moviesArr)
   }
 
+  // Event handler for movie POST requests
+
+  function handleAddMovie(movieRes){
+    console.log(movieRes)
+    let moviesArr = [...movies, movieRes]
+    setMovies(moviesArr)
+  }
+
   // Even handlers for review POST requests
 
   function handleAddReview(newReview){
@@ -82,6 +90,8 @@ function App(){
     setUsers(usersArr)
   }
 
+  // Event handler for Delete Request
+
   function handleDelete(deletedReview){
     let moviesArr = [...movies]
 
@@ -108,7 +118,7 @@ function App(){
           <StyledMoviePage movies = {movies}/>
         </Route>
         <Route path = "/reviews">
-          <StyledReviewsPage handleDelete = {handleDelete} movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview}/>
+          <StyledReviewsPage handleDelete = {handleDelete} movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview} handleAddMovie = {handleAddMovie}/>
         </Route>
         <Route exact path = "/">
           <h1>Home</h1>

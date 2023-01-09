@@ -19,7 +19,7 @@ function MoviePage({className, children, movies, isLoading}){
 
             <Route path = {`${match.url}/:movieId`}>
                 <StyledMovie movies = {movies} setReview = {setReview}/>
-                <StyledReviewCapsule review = {review}/>
+                {review? <StyledReviewCapsule review = {review}/>: null}
             </Route>
         </div>
     )

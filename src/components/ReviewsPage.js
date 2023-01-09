@@ -3,7 +3,7 @@ import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
 
-function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview, handleDelete}){
+function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview, handleDelete, handleAddMovie}){
 
     // NOTE- Current User controls which user and user's ratings are shown in the left container on this page 
     
@@ -66,7 +66,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {showClickedReview}/>
             {isCreatingReview? 
-            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} onAddReview = {onAddReview} setIsCreatingReview= {setIsCreatingReview}/>
+            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} onAddReview = {onAddReview} setIsCreatingReview= {setIsCreatingReview} handleAddMovie = {handleAddMovie}/>
             :
             isRUDing?
             <StyledReviewRUDHub onDelete = {onDelete} setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>

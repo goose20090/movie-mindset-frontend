@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import {faker} from '@faker-js/faker'
 
-function MovieCreater({className, setIsCreatingMovie}){
-    const genres = ["Action", "Horror", "Drama", "Thriller", "Western", "Sci-Fi", "Comedy", "Crime", "Romance", "Adventure"]
-    const streamingServices = ["Disney+", "Netflix", "Amazon Prime"]
-
-
+function MovieCreater({className, setIsCreatingMovie, handleAddMovie}){
     const [formSubmitted, setIsFormSubmitted] = useState(false)
+    const [movieForm, setMovieForm] = useState({title: ""})
 
-    const [movieForm, setMovieForm] = useState("")
 
     function handleSubmit(e){
         e.preventDefault()
@@ -17,19 +12,33 @@ function MovieCreater({className, setIsCreatingMovie}){
     }
 
     function handleChange(e){
-        setMovieForm(e.target.value)
+        setMovieForm({
+            ...movieForm,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    function onAddMovie(){
+        handleAddMovie(movieForm)
+        fetch('http://localhost:9292/movies', {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(movieForm),
+        })
+        .then(res=>res.json())
+        .then(res=> handleAddMovie(res))
     }
     return(
         <div className={className}>
             {formSubmitted?
             <div>
-                <h4 id = "close-button" onClick = {()=> setIsFormSubmitted(false)}>X</h4>
-                <h1>
-                    Do you mean?
-                </h1>
-
-                <h2>{movieForm}</h2>
-                <h4>{faker.date.past(80).toLocaleDateString()}</h4>
+                <h2>
+                    Add {movieForm.title} to reviewable movies?
+                </h2>
+                <button onClick = {onAddMovie}>Add</button>
+                <button onClick = {()=> setIsFormSubmitted(false)}>Cancel</button>
             </div>
             :
             <div>
@@ -37,7 +46,7 @@ function MovieCreater({className, setIsCreatingMovie}){
                 <h1>Add a movie:</h1>
                 <form onSubmit={handleSubmit}>
                     <label>Title:</label>
-                    <input type = "text" placeholder="e.g. Star Wars" value = {movieForm} onChange = {handleChange}></input>
+                    <input name = "title" type = "text" placeholder="e.g. Star Wars" value = {movieForm.title} onChange = {handleChange}></input>
                     <button>Submit</button>
                 </form>
             </div>

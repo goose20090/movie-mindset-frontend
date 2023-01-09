@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { MovPgStyledRating } from "../component-styles/Rating.style";
 import { StyledRatingContainer } from "../component-styles/RatingContainer.style";
@@ -7,7 +7,7 @@ function Movie({className, movies, setReview}){
     const params = useParams()
     const movie = movies[params.movieId]
     const reviews = movie.reviews
-
+    console.log(reviews.length)
     function handleClick(id){
         setReview(reviews.find((review)=> review.id === id))
     }
@@ -21,7 +21,7 @@ function Movie({className, movies, setReview}){
                 <h4>{movie.release_date}</h4>
             </div>
             <StyledRatingContainer id = "movie-ratings">
-                {reviews.map((review)=><MovPgStyledRating key = {review.id} review= {review} setReview = {setReview} title= {"user"} handleClick= {handleClick}/>)}
+                { reviews.length === 0? <p>(No reviews)</p> :reviews.map((review)=><MovPgStyledRating key = {review.id} review= {review} setReview = {setReview} title= {"user"} handleClick= {handleClick}/>)}
             </StyledRatingContainer>
         </div>
     )
