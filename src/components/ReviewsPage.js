@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyledReviewCreateHub } from "../component-styles/ReviewCreateHub.style";
 import { StyledReviewRUDHub } from "../component-styles/ReviewRUDHub.style";
 import { StyledUserProfile } from "../component-styles/UserProfile.style";
@@ -12,7 +12,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
     const [currentReview, setCurrentReview] = useState(false)
     const [isRUDing, setIsRUDing] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
-    const [isCreating, setIsCreating] = useState(false)
+    const [isCreatingReview, setIsCreatingReview] = useState(false)
 
     function onUpdateReview(updatedReviewObj){
 
@@ -28,8 +28,8 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
 
     function showClickedReview(id){
         // Check if Create Hub is being shown and hide if not
-        if(isCreating){
-            setIsCreating(false)
+        if(isCreatingReview){
+            setIsCreatingReview(false)
         }
         // Check if RUD Hub is being shown and show if not
         if(!isRUDing){
@@ -48,7 +48,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
 
         // navigate to the RUDHub
 
-        setIsCreating(false)
+        setIsCreatingReview(false)
         setIsRUDing(true)
 
         handleAddReview(newReview)
@@ -65,8 +65,8 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
     return (
         <div className={className}>
             <StyledUserProfile currentUser = {currentUser} handleClick= {showClickedReview}/>
-            {isCreating? 
-            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} onAddReview = {onAddReview}/>
+            {isCreatingReview? 
+            <StyledReviewCreateHub currentUser = {currentUser} movies = {movies} onAddReview = {onAddReview} setIsCreatingReview= {setIsCreatingReview}/>
             :
             isRUDing?
             <StyledReviewRUDHub onDelete = {onDelete} setIsRUDing = {setIsRUDing} onUpdateReview = {onUpdateReview} setCurrentReview = {setCurrentReview} currentReview = {currentReview} isEditing= {isEditing} setIsEditing = {setIsEditing}/>
@@ -74,7 +74,7 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
             <div id = "initial-page">
                 <h2>
                     Click one of your ratings for more info/options, or click  
-                        <span onClick = {()=> {setIsCreating(true)}} id = "create-hub-link"> here </span> 
+                        <span onClick = {()=> {setIsCreatingReview(true)}} id = "create-hub-link"> here </span> 
                     to write a new one!
                 </h2>
             </div>}

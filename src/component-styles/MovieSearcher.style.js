@@ -24,4 +24,15 @@ li{
     position: absolute;
 }
 
+#close-button{
+    float: right;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+span{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 `

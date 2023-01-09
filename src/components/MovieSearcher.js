@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 
-function MovieSearcher({className, movies, handleMovieClick}){
+function MovieSearcher({className, movies, handleMovieClick, setIsCreatingMovie, setIsCreatingReview}){
 
     const [movieShowing, setMoviesShowing] = useState([...movies])
     const [formData, setFormData] = useState("")
-
 
 
     function onMovieClick(id){
@@ -31,8 +30,11 @@ function MovieSearcher({className, movies, handleMovieClick}){
 
     return(
         <div className={className}>
+            <h4 id = "close-button" onClick = {()=>
+                setIsCreatingReview(false)
+                }>X</h4>
             <h2>
-                Pick a movie to review:
+                Pick a movie to review or <span onClick = {()=> setIsCreatingMovie(true)}>enter a new one</span>
             </h2>
             <div id = "show-movies">
             <form>
