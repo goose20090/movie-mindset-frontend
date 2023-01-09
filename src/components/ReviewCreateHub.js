@@ -18,7 +18,7 @@ function ReviewCreateHub({className, movies, onAddReview, currentUser, setIsRUDi
     return(
         <div className={className}>
             {isSearching? 
-                isCreatingMovie? <StyledMovieCreater setIsCreatingMovie= {setIsCreatingMovie} handleAddMovie= {handleAddMovie}/>:
+                isCreatingMovie? <StyledMovieCreater setIsCreatingMovie= {setIsCreatingMovie} handleAddMovie= {handleAddMovie} setReviewingMovie = {setReviewingMovie} setIsSearching = {setIsSearching}/>:
                 <StyledMovieSearcher setIsRUDing={setIsRUDing} handleMovieClick = {handleMovieClick} movies = {movies} setIsSearching= {setIsSearching} setIsCreatingMovie = {setIsCreatingMovie} setIsCreatingReview = {setIsCreatingReview}/>
             : 
             <StyledNewReviewForm setIsSearching = {setIsSearching} currentUser = {currentUser} reviewingMovie= {reviewingMovie} onAddReview = {onAddReview}/>}

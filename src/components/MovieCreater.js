@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function MovieCreater({className, setIsCreatingMovie, handleAddMovie}){
+function MovieCreater({className, setIsCreatingMovie, handleAddMovie, setReviewingMovie, setIsSearching}){
     const [formSubmitted, setIsFormSubmitted] = useState(false)
     const [movieForm, setMovieForm] = useState({title: ""})
 
@@ -28,7 +28,12 @@ function MovieCreater({className, setIsCreatingMovie, handleAddMovie}){
             body: JSON.stringify(movieForm),
         })
         .then(res=>res.json())
-        .then(res=> handleAddMovie(res))
+        .then((res)=> {
+            handleAddMovie(res)
+            setReviewingMovie(res)
+            setIsCreatingMovie(false)
+            setIsSearching(false)
+        })
     }
     return(
         <div className={className}>
