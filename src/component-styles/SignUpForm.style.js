@@ -3,16 +3,14 @@ import SignUpForm from "../components/SignUpForm";
 
 export const StyledSignUpForm = styled(SignUpForm)`
 
-
+display: inline-flex;
 #open-button {
   background-color: #555;
   color: white;
   padding: 16px 20px;
-  border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
-  top: 23px;
+  margin-top: 100px;
   right: 400px;
   width: 280px;
 
@@ -62,7 +60,7 @@ button{
   color: white;
   border: 0.2em solid;
   border-color: white;
-  padding: 16px 20px;
+  padding: 10px 16px;
   cursor: pointer;
   width: 75%;
   margin-bottom:10px;

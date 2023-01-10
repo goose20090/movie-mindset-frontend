@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledEditReview } from "../component-styles/EditReview.style";
 import useStarify from "../hooks/useStarify";
+import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
 function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEditing, onUpdateReview, onDelete}){
     
@@ -29,14 +30,17 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
             {isEditing?
              <StyledEditReview currentReview = {currentReview} onUpdateReview = {onUpdateReview}/>
              :
-             <div id ="review-content">
-                <p>Your Rating: {stars} </p>
-                <p>Your Comment: {currentReview.comment}</p>
-            </div>}
-            <div id = "options">
-                <button onClick={()=>{setIsEditing((isEditing)=> !isEditing)}}>Edit</button>
-                <button onClick= {handleClick}>Delete</button>
-            </div>
+             <>
+                <div id ="review-content">
+                    <p>Your Rating: {stars} </p>
+                    <p>Your Comment: {currentReview.comment}</p>
+                </div>
+                <div id = "options">
+                    <StyledSimpleButton handleClick={()=>{setIsEditing((isEditing)=> !isEditing)}} buttonLabel= "Edit"></StyledSimpleButton>
+                    <StyledSimpleButton handleClick={handleClick} buttonLabel = "Delete"></StyledSimpleButton>
+                </div>
+            </>
+            }
         </div>
     )
 }

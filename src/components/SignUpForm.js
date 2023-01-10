@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyledCoolButton } from "../component-styles/CoolButton.style";
+import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
 function SignUpForm({className, handleSignUpSubmit}){
 
@@ -17,7 +17,7 @@ function SignUpForm({className, handleSignUpSubmit}){
     }
     return(
         <div className={className}>
-            <StyledCoolButton id ="open-button" handleClick= {toggleForm} buttonLabel = "Sign up"/>
+            <StyledSimpleButton id ="open-button" handleClick= {toggleForm} buttonLabel = "SIGN UP"/>
             <div id = "form-popup" style = {{'display': `${display? 'block': 'none'}`}}>
                 <form id = "form-container" onSubmit={onSubmit}>
                     <label htmlFor= "user-name">Username</label>

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 import { StyledCoolButton } from "../component-styles/CoolButton.style";
 import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
+import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
 function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}){
     const [loggedIn, setLoggedIn] = useState(false)
@@ -46,12 +47,11 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
         {loggedIn? 
             <>
             <h2>Welcome, {currentUser.name}! </h2>
-            <StyledCoolButton buttonLabel = "Logout" handleClick={handleLogout}></StyledCoolButton>
+            <StyledSimpleButton buttonLabel = "LOGOUT" handleClick={handleLogout}></StyledSimpleButton>
             </>
             :
             <div>
                 <StyledSignUpForm handleSignUpSubmit = {handleSignUpSubmit}/>
-                <label htmlFor= "login">Login: </label>
                 <select id = "login" onChange = {handleLogin}>
                     <option value = "">Login</option>
                     {users? users.map((user)=> <option key = {user.id} value = {user.name}>{user.name}</option>): null}

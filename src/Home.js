@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledCoolButton } from "./component-styles/CoolButton.style";
+
 
 
 function Home({className}){
@@ -7,7 +7,7 @@ function Home({className}){
         <div className={className} id = "home">
 
             <p>
-                Welcome to Celluoid! A movie review website for movie-lovers around the world.
+                Welcome to Pod-Bay-Doors! A movie review website for movie-loving robots around the world.
             </p>
 
             <p>
@@ -17,7 +17,6 @@ function Home({className}){
             <p>
                 We'll see you at the movies 📽️
             </p>
-            <StyledCoolButton buttonLabel={"test"}/>
         </div>
     )
 }

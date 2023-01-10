@@ -1,4 +1,5 @@
 import React from "react";
+import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
 function CommentForm({comment, setComment, className, handleSubmit}){
     return(
@@ -12,7 +13,7 @@ function CommentForm({comment, setComment, className, handleSubmit}){
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                     />
-                    <input type="submit" value="Save" />
+                    <StyledSimpleButton handleClick={handleSubmit} buttonLabel={"Save"} />
             </form>
         </div>
     )

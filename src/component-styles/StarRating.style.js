@@ -4,6 +4,7 @@ import StarRating from "../components/StarRating";
 export const StyledStarRating = styled(StarRating)`
 
 display: inline;
+padding: 5%;
 
 button {
   background-color: transparent;
