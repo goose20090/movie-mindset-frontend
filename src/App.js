@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import { StyledHome } from "./component-styles/Home.style";
 import {StyledMainAppContainer} from "./component-styles/MainAppContainer.style"
 import { StyledMoviePage } from "./component-styles/MoviePage.style";
 import { StyledNavBar } from "./component-styles/NavBar.style";
@@ -121,7 +122,7 @@ function App(){
           <StyledReviewsPage handleDelete = {handleDelete} movies = {movies} currentUser = {currentUser} handleReviewUpdate = {updateMoviesState} handleAddReview = {handleAddReview} handleAddMovie = {handleAddMovie}/>
         </Route>
         <Route exact path = "/">
-          <h1>Home</h1>
+          <StyledHome/>
         </Route>  
       </Switch>   
     </StyledMainAppContainer>

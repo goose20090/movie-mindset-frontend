@@ -5,5 +5,7 @@ export const StyledCommentForm = styled(CommentForm)`
 
 button{
     width: 10px;
+    
 }
+
 `
