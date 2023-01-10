@@ -1,5 +1,4 @@
 import React from "react";
-import CoolButton from "./CoolButton";
 
 
 function Home({className}){

@@ -9,10 +9,24 @@ body{
     opacity: 1;
     background: white;
     color: black;
-    $anim-text-offset: 0em;
   }
 
+  .button:hover{
+    opacity: 1;
+    .button__text{
+        animation: fx-text-2 .3s ease-out;
+        &--bis{
+            animation: fx-text-bis-2 .3s ease-out;
+        }
+    }
+    .button__mask{
+        animation: fx-mask-2 .3s ease-out;
+    }
 }
+
+}
+
+
 
 .button{
     margin: 10px;
@@ -95,4 +109,34 @@ body{
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+@keyframes fx-mask-2 {
+  0%{
+      transform: translateX(-100%) rotate(45deg);
+  }
+  100%{
+      transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@keyframes fx-text-2 {
+  0%{
+      transform: translateX(0);
+      opacity: 1;
+  }
+  100%{
+      transform: translateX(0em);
+      opacity: 0;
+  }
+}
+@keyframes fx-text-bis-2 {
+  0%{
+      transform: translateX(-1 * 0em);
+      opacity: 0;
+  }
+  100%{
+      transform: translateX(0);
+      opacity: 1;
+  }
 }
