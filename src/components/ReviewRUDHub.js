@@ -12,6 +12,12 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
 
     function handleClick(){
         onDelete(currentReview)
+
+        fetch(`http://localhost:9292/reviews/${currentReview.id}`, {
+            method: "DELETE",
+        })
+        .then(res=>res.json())
+        .then((res)=> console.log('deleted:', res))
     }
     return(
         <div className={className}>
