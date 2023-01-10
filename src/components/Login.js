@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
+import { StyledCoolButton } from "../component-styles/CoolButton.style";
 import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
 
 function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}){
@@ -45,7 +46,7 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
         {loggedIn? 
             <>
             <h2>Welcome, {currentUser.name}! </h2>
-            <button onClick={handleLogout}>Logout</button>
+            <StyledCoolButton buttonLabel = "Logout" handleClick={handleLogout}></StyledCoolButton>
             </>
             :
             <div>

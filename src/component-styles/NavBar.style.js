@@ -8,12 +8,9 @@ export const StyledNavBar = styled(NavBar)`
 
 export const StyledNavLink = styled(NavLink)`
 
-margin: 50px;
+margin: 2%
 
 
-&:hover{
-    animation-play-state: paused;
-}
 
 `
 
