@@ -22,4 +22,8 @@ margin-right: 25px;
 h4{
     margin-left: -35%;
 }
+
+select{
+    font-family: inherit;
+}
 `

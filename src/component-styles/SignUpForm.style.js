@@ -2,6 +2,8 @@ import styled from "styled-components";
 import SignUpForm from "../components/SignUpForm";
 
 export const StyledSignUpForm = styled(SignUpForm)`
+
+
 #open-button {
   background-color: #555;
   color: white;
@@ -11,7 +13,7 @@ export const StyledSignUpForm = styled(SignUpForm)`
   opacity: 0.8;
   position: fixed;
   top: 23px;
-  right: 28px;
+  right: 400px;
   width: 280px;
 
   &:hover{
@@ -20,7 +22,7 @@ export const StyledSignUpForm = styled(SignUpForm)`
 }
 
 label{
-  color: black;
+  color: white;
 }
 
 #form-popup {
@@ -35,7 +37,7 @@ label{
 #form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: white;
+  background-color: black;
 }
 
 
@@ -52,18 +54,26 @@ label{
 }
 
 
-.btn {
-  background-color: #04AA6D;
+button{
+  font-family: inherit;
+  font-size: medium;
+  margin-left: 14%;
+  background-color: black;
   color: white;
+  border: 0.2em solid;
+  border-color: white;
   padding: 16px 20px;
-  border: none;
   cursor: pointer;
-  width: 100%;
+  width: 75%;
   margin-bottom:10px;
   opacity: 0.8;
+  &:hover{
+    opacity: 1;
+  }
 }
 .cancel {
-  background-color: red;
+  background-color: white;
+  color: black;
 }
 
 `

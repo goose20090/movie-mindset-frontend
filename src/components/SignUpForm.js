@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StyledCoolButton } from "../component-styles/CoolButton.style";
 
 function SignUpForm({className, handleSignUpSubmit}){
 
@@ -16,14 +17,13 @@ function SignUpForm({className, handleSignUpSubmit}){
     }
     return(
         <div className={className}>
-            <button id ="open-button" onClick = {toggleForm} > Sign Up</button>
+            <StyledCoolButton id ="open-button" handleClick= {toggleForm} buttonLabel = "Sign up"/>
             <div id = "form-popup" style = {{'display': `${display? 'block': 'none'}`}}>
                 <form id = "form-container" onSubmit={onSubmit}>
-                    <h1>Login</h1>
                     <label htmlFor= "user-name">Username</label>
-                    <input id = 'text-input'type= "text" placeholder="Enter Username" name = "user-name" value = {formData} onChange ={(e)=>{setFormData(e.target.value)}} required />
-                    <button type = "submit" className= "btn"> Sign up</button>
-                    <button type = "button" className = "btn cancel" onClick = {toggleForm}>Close</button>
+                    <input id = 'text-input'type= "text" placeholder="Enter your new username..." name = "user-name" value = {formData} onChange ={(e)=>{setFormData(e.target.value)}} required />
+                    <button type = "submit" className= "btn"> SIGN UP</button>
+                    <button type = "button" className = "btn cancel" onClick = {toggleForm}>CLOSE</button>
                 </form>
             </div>
         </div>

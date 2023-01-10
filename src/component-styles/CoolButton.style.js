@@ -22,7 +22,7 @@ export const StyledCoolButton = styled(CoolButtonComponent)`
 }
 }
 
-.button__text {
+/* .button__text {
   display: block;
   padding: 1em 2em;
   text-transform: uppercase;
@@ -102,6 +102,6 @@ export const StyledCoolButton = styled(CoolButtonComponent)`
     transform: translateX(0);
     opacity: 1;
   }
-}
+} */
 
 `
