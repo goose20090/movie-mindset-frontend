@@ -13,10 +13,6 @@ function LoginSelect({className, users, handleLogin}){
     }
 
     const customStyles = {
-        // container: (base, state) => ({
-        //     ...base,
-        //     display: state.isFocused ? 'block' : 'none'
-        //   }),
         
         option: (provided, state) => ({
           ...provided,

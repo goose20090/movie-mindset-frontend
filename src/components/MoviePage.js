@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useRouteMatch, Route, NavLink} from "react-router-dom";
+import { useRouteMatch, Route} from "react-router-dom";
 import { StyledMovie } from "../component-styles/Movie.style";
+import { StyledNestedNavLink } from "../component-styles/MoviePage.style";
 import { StyledReviewCapsule } from "../component-styles/ReviewCapsule.style";
 
-function MoviePage({className, children, movies, isLoading}){
+function MoviePage({className, movies, isLoading}){
 
     const match = useRouteMatch()
     const [review, setReview] = useState({})
@@ -15,9 +16,9 @@ function MoviePage({className, children, movies, isLoading}){
 
     const renderMovieLinks = Object.keys(movies).map((movieId)=>(
         <li key = {movieId}>
-            <NavLink to = {`/movies/${movieId}`} onClick= {handleClick} id = {movieId}>
+            <StyledNestedNavLink activeStyle = {{color: 'lightgrey', textDecoration: 'underline'}}to = {`/movies/${movieId}`} onClick= {handleClick} id = {movieId}>
                 {movies[movieId].title}
-            </NavLink>
+            </StyledNestedNavLink>
         </li>
     ))
     
