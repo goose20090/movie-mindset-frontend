@@ -15,6 +15,30 @@ h2{
     text-decoration: underline;
     cursor: pointer;
 
+    color: white;
+position: relative;
+transition: color .4s ease-out;
+
+    &:hover{
+        color: lightgrey;
+        text-decoration: none;
+    }
+    ::after{
+        border-top: .1em solid white;
+        content: "";
+        position: absolute;
+        right: 100%;
+        bottom: 0.1em;
+        left: 0;
+
+        transition: right .4s cubic-bezier(0,.5,0,1), border-color .4s ease-out;
+    }
+
+    &:hover::after{
+        border-color: grey;
+        right:0;
+    }
+
 }
 
 #initial-page{

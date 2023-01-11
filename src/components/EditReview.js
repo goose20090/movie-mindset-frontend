@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StyledCommentForm } from "../component-styles/CommentForm.style";
 import { StyledStarRating } from "../component-styles/StarRating.style";
 

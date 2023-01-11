@@ -34,7 +34,7 @@ function MovieSearcher({className, movies, handleMovieClick, setIsCreatingMovie,
                 setIsCreatingReview(false)
                 }>X</h4>
             <h2>
-                Pick a movie to review or <span onClick = {()=> setIsCreatingMovie(true)}>enter a new one</span>
+                Pick a movie to review or <span id = "create-review-link" onClick = {()=> setIsCreatingMovie(true)}>enter a new one</span>
             </h2>
             <div id = "show-movies">
             <form>

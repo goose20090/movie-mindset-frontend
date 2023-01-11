@@ -5,6 +5,19 @@ export const StyledMovieSearcher = styled(MovieSearcher)`
 
 h2{
     margin-left: 2.5%;
+
+
+    #create-review-link{
+        text-decoration: underline;
+        cursor: pointer;
+        position: relative;
+        transition: color .4s ease-out;
+
+        &:hover{
+            color: lightgrey;
+        }
+
+}
 }
 
 #show-movies{
@@ -33,12 +46,10 @@ li{
 #close-button{
     float: right;
     margin-top: -10px;
+    margin-right: 2.5%;
     cursor: pointer;
 }
 
-span{
-    text-decoration: underline;
-    cursor: pointer;
-}
+
 
 `

@@ -17,8 +17,8 @@ function Movie({className, movies, setReview}){
             <h2>{movie.title}</h2>
             <div id = "info">
                 <h4>{movie.genre}</h4>
-                <h4>{movie.streaming_platform}</h4>
-                <h4>{movie.release_date}</h4>
+                <h4>Available on {movie.streaming_platform}</h4>
+                <h4>Released {movie.release_date}</h4>
             </div>
             <StyledRatingContainer id = "movie-ratings">
                 { reviews.length === 0? <p>(No reviews)</p> :reviews.map((review)=><MovPgStyledRating key = {review.id} review= {review} setReview = {setReview} title= {"user"} handleClick= {handleClick}/>)}

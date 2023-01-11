@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
 function MovieCreater({className, setIsCreatingMovie, handleAddMovie, setReviewingMovie, setIsSearching}){
     const [formSubmitted, setIsFormSubmitted] = useState(false)
@@ -42,18 +43,22 @@ function MovieCreater({className, setIsCreatingMovie, handleAddMovie, setReviewi
                 <h2>
                     Add {movieForm.title} to reviewable movies?
                 </h2>
-                <button onClick = {onAddMovie}>Add</button>
-                <button onClick = {()=> setIsFormSubmitted(false)}>Cancel</button>
+                <div className = "options">
+                    <StyledSimpleButton handleClick= {onAddMovie} buttonLabel = "Yes"/>
+                    <StyledSimpleButton handleClick= {()=> setIsFormSubmitted(false)} buttonLabel = "Cancel"/>
+                </div>
             </div>
             :
             <div>
-                <h4 id = "close-button" onClick = {()=> setIsCreatingMovie(false)}>X</h4>
-                <h1>Add a movie:</h1>
+                <h2 id = "form-copy">Add a movie for people to review:</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Title:</label>
                     <input name = "title" type = "text" placeholder="e.g. Star Wars" value = {movieForm.title} onChange = {handleChange}></input>
-                    <button>Submit</button>
                 </form>
+                <div className= "options">
+                        <StyledSimpleButton handleClick={handleSubmit} buttonLabel = "Submit"/>
+                        <StyledSimpleButton handleClick={()=> setIsCreatingMovie(false)} buttonLabel = "Cancel"/>
+                </div>
             </div>
             }
 

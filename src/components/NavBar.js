@@ -1,5 +1,4 @@
 import React from "react";
-import { StyledCoolButton } from "../component-styles/CoolButton.style";
 import {StyledNavLink } from "../component-styles/NavBar.style";
 import { StyledLogin } from "../component-styles/Login.style";
 import CoolNavLink from "../CoolNavLink";

@@ -73,8 +73,8 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
             : 
             <div id = "initial-page">
                 <h2>
-                    Click one of your ratings for more info/options, or click  
-                        <span onClick = {()=> {setIsCreatingReview(true)}} id = "create-hub-link"> here </span> 
+                    Click one of your ratings for more info/options, or click
+                    <span> </span><span onClick = {()=> {setIsCreatingReview(true)}} id = "create-hub-link">here</span><span> </span>
                     to write a new one!
                 </h2>
             </div>}

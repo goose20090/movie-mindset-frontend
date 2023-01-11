@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
-import { StyledCoolButton } from "../component-styles/CoolButton.style";
 import { StyledLoginSelect } from "../component-styles/LoginSelect.style";
 import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
 import { StyledSimpleButton } from "../component-styles/SimpleButton.style";

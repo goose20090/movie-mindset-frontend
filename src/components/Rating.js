@@ -6,11 +6,11 @@ function Rating({className, review, title, handleClick}){
     const {rating} = review
     const titleObj = review[`${title}`] 
     let titleKey
-    if (title == 'movie'){
+    if (title === 'movie'){
         titleKey = 'title'
     }
 
-    if (title == 'user'){
+    if (title === 'user'){
         titleKey = 'name'
     }
 

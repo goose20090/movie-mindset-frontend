@@ -46,7 +46,6 @@ function LoginSelect({className, users, handleLogin}){
           },
       }
       
-    const selectRef = React.useRef()
     let options = []
     users.forEach(user => {
         options.push({value: [user.name], label: [user.name]})
