@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {StyledMovieList} from "../component-styles/MovieList.style"
 import { useRouteMatch, Route, NavLink} from "react-router-dom";
 import { StyledMovie } from "../component-styles/Movie.style";
 import { StyledReviewCapsule } from "../component-styles/ReviewCapsule.style";
@@ -13,7 +12,7 @@ function MoviePage({className, children, movies, isLoading}){
         setReview(movies[e.target.id].reviews[0])
 
     }
-    
+
     const renderMovieLinks = Object.keys(movies).map((movieId)=>(
         <li key = {movieId}>
             <NavLink to = {`/movies/${movieId}`} onClick= {handleClick} id = {movieId}>
@@ -24,10 +23,9 @@ function MoviePage({className, children, movies, isLoading}){
     
     return(
         <div className={className}>
-            {children}
-            <StyledMovieList>
+            <div id = "list">
                 {isLoading? <h1>Loading...</h1> : renderMovieLinks}
-            </StyledMovieList>
+            </div>
 
             <Route path = {`${match.url}/:movieId`}>
                 <StyledMovie movies = {movies} setReview = {setReview}/>
