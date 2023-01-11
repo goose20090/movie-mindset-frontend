@@ -5,7 +5,7 @@ export const StyledMoviePage = styled(MoviePage)`
 
 display: flexbox;
 justify-content: flex-start;
-gap: 20px;
+gap: 5%;
 margin: 2%;
 
 `

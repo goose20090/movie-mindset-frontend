@@ -7,11 +7,11 @@ function Home({className}){
         <div className={className} id = "home">
 
             <p>
-                Welcome to Pod-Bay-Doors! A movie review website for movie-loving robots around the world.
+                Welcome to Pod-Bay-Doors! A review site for movie-loving robots around the world.
             </p>
 
             <p>
-                Click the 'Movies' link to see what the people are saying about your favourite films or start an account to give us your take!
+                Go to Movies see what the people are saying about your favourite films or start an account to give us your take!
             </p>
 
             <p>

@@ -5,11 +5,20 @@ export const StyledLogin = styled(Login)`
 
 float: right;
 gap: 10px;
-margin-right: 50px;
-display: flex;
+width: fit-content ;
+margin-right: 10%;
 
 
-#logout-button{
+#login-hub{
+    display: flex;
+}
+
+#logout-hub{
+    display: inline-flex;
+    gap: 20px;
+    left: 25%;
+    position: relative;
 
 }
+
 `

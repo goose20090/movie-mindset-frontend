@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 import { StyledCoolButton } from "../component-styles/CoolButton.style";
+import { StyledLoginSelect } from "../component-styles/LoginSelect.style";
 import { StyledSignUpForm } from "../component-styles/SignUpForm.style";
 import { StyledSimpleButton } from "../component-styles/SimpleButton.style";
 
@@ -10,7 +11,7 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
     const history = useHistory();
 
     function handleLogin(e){
-        const loggedInUser = users.find((user)=> user.name === e.target.value)
+        const loggedInUser = users.find((user)=> user.name === e.value[0])
         setCurrentUser(loggedInUser)
         setLoggedIn(!loggedIn)
     }
@@ -45,17 +46,18 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
     return(
         <div className={className}>
         {loggedIn? 
-            <>
+            <div id = 'logout-hub'>
             <h2>Welcome, {currentUser.name}! </h2>
             <StyledSimpleButton id = "logout-button" buttonLabel = "LOGOUT" handleClick={handleLogout}></StyledSimpleButton>
-            </>
+            </div>
             :
-            <div>
+            <div id = "login-hub">
                 <StyledSignUpForm handleSignUpSubmit = {handleSignUpSubmit}/>
-                <select id = "login" onChange = {handleLogin}>
+                <StyledLoginSelect handleLogin={handleLogin} users = {users}/>
+                {/* <select id = "login" onChange = {handleLogin}>
                     <option value = "">Login</option>
                     {users? users.map((user)=> <option key = {user.id} value = {user.name}>{user.name}</option>): null}
-                </select>
+                </select> */}
             </div>
             }
         </div>

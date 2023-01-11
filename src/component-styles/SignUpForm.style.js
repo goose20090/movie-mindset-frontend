@@ -3,7 +3,8 @@ import SignUpForm from "../components/SignUpForm";
 
 export const StyledSignUpForm = styled(SignUpForm)`
 
-display: inline-flex;
+
+margin-left: -100px;
 #open-button {
   background-color: #555;
   color: white;
