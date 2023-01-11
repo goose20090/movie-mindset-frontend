@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledCoolButton } from "../component-styles/CoolButton.style";
-import { StyledLogin, StyledNavLink } from "../component-styles/NavBar.style";
+import {StyledNavLink } from "../component-styles/NavBar.style";
+import { StyledLogin } from "../component-styles/Login.style";
 import CoolNavLink from "../CoolNavLink";
 
 function NavBar({className, currentUser, users, setCurrentUser, handleAddToUsers}){

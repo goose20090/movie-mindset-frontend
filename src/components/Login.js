@@ -47,7 +47,7 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
         {loggedIn? 
             <>
             <h2>Welcome, {currentUser.name}! </h2>
-            <StyledSimpleButton buttonLabel = "LOGOUT" handleClick={handleLogout}></StyledSimpleButton>
+            <StyledSimpleButton id = "logout-button" buttonLabel = "LOGOUT" handleClick={handleLogout}></StyledSimpleButton>
             </>
             :
             <div>
