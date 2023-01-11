@@ -9,6 +9,7 @@ overflow: scroll;
 overflow-x: hidden;
 height: 40vw;
 
+
 li{
     list-style: none;
     margin-left: 10px;
@@ -16,6 +17,7 @@ li{
 
 a{
     text-decoration: underline;
-    color:white;
+    color: white;
 }
+
 `

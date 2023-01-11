@@ -10,4 +10,13 @@ export const StyledNewReviewForm = styled(NewReviewForm)`
     cursor: pointer;
 }
 
+input{
+    width: 200px;
+}
+
+h2{
+    margin-left: 2.5%;
+
+}
+
 `

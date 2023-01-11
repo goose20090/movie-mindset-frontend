@@ -27,10 +27,9 @@ function NewReviewForm({className, reviewingMovie, onAddReview, currentUser, set
 
     return(
     <div className={className}>
-        <h4 id = "close-button" onClick = {()=>setIsSearching(true)}>X</h4>
         <h2>What's your take on {reviewingMovie.title}?</h2> 
         <StyledStarRating rating = {rating} setRating = {setRating}/>
-        <StyledCommentForm comment = {comment} setComment = {setComment} handleSubmit = {handleSubmit}/>
+        <StyledCommentForm comment = {comment} setComment = {setComment} handleSubmit = {handleSubmit} handleClose= {()=>setIsSearching(true)} />
 
 
     </div>

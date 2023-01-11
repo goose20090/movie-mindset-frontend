@@ -4,8 +4,15 @@ import CommentForm from "../components/CommentForm";
 export const StyledCommentForm = styled(CommentForm)`
 
 button{
-    margin-left: 5px;
+    display: block;;
+    margin-left: 20%;
 }
 
 padding: 5%;
+
+#options{
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: -2.5%;
+}
 `

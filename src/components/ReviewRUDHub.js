@@ -24,11 +24,10 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
         <div className={className}>
             <div id = "movie-info">
                 <h2>{movie.title}</h2>
-                <p> Released {movie.release_date}</p>
                 <h4 id = "close-button" onClick = {()=>setIsRUDing(false)}>X</h4>
             </div>
             {isEditing?
-             <StyledEditReview currentReview = {currentReview} onUpdateReview = {onUpdateReview}/>
+             <StyledEditReview currentReview = {currentReview} onUpdateReview = {onUpdateReview} handleClose = {()=>setIsRUDing(false)}/>
              :
              <>
                 <div id ="review-content">

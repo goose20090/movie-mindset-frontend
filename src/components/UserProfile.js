@@ -14,7 +14,7 @@ function UserProfile({className, currentUser, handleClick}){
             <div id = "review-count">
                 <p>{currentUser.reviews.length} reviews</p>
             </div>
-                {reviews.map((review)=> <RvPgStyledRating key = {review.id} title = {"movie"} review = {review} handleClick = {handleClick}/>)}
+                {reviews.map((review)=> <RvPgStyledRating className = "user-profile-rating" key = {review.id} title = {"movie"} review = {review} handleClick = {handleClick}/>)}
             <div>
             </div>
         </div>

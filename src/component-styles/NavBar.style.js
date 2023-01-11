@@ -7,5 +7,5 @@ export const StyledNavBar = styled(NavBar)`
 
 export const StyledNavLink = styled(NavLink)`
 
-margin: 2%;
+margin: 0.75%;
 `

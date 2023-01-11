@@ -9,6 +9,7 @@ height: fit-content;
 border: solid white 5px;
 
 #name-and-avatar{
+    margin-left: 2.5%;
     display: flex;
     justify-content: space-between;
     img{
@@ -19,7 +20,14 @@ border: solid white 5px;
 
 #review-count{
     border-bottom: solid white 5px;
+    p{
+        margin-left: 5%;
+    }
 
 }
 
+
+.user-profile-rating{
+    margin-left: 2.5%;
+}
 `

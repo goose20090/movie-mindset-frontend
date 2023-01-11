@@ -21,6 +21,10 @@ h2{
     border: solid 5px white;
     width: 426px;
     height: fit-content;
+    
+    h2{
+        margin-left: 2.5%;
+    }
 }
 
 `

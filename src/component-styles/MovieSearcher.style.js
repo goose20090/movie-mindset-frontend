@@ -3,6 +3,10 @@ import MovieSearcher from "../components/MovieSearcher";
 
 export const StyledMovieSearcher = styled(MovieSearcher)`
 
+h2{
+    margin-left: 2.5%;
+}
+
 #show-movies{
     border-top: solid 5px white;
     overflow: scroll;
@@ -12,7 +16,7 @@ export const StyledMovieSearcher = styled(MovieSearcher)`
 }
 
 ul{
-    margin-top: 7.5%;
+    margin-top: 1%;
 }
 li{
     list-style: none;
@@ -20,8 +24,10 @@ li{
 }
 
 #search-bar{
-    width: 300px;
-    position: absolute;
+    width: 100%;
+    position: relative;
+    top: -2px;
+    font-family: inherit;
 }
 
 #close-button{
