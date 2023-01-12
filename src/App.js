@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import { StyledHome } from "./component-styles/Home.style";
-import {StyledMainAppContainer} from "./component-styles/MainAppContainer.style"
-import { StyledMoviePage } from "./component-styles/MoviePage.style";
-import { StyledNavBar } from "./component-styles/NavBar.style";
-import { StyledReviewsPage } from "./component-styles/ReviewsPage.style";
+import { StyledHome } from "./component-styles/Home/Home.style";
+import { StyledMainAppContainer } from "./component-styles/Misc/MainAppContainer.style";
+import { StyledMoviePage } from "./component-styles/MoviesPage/MoviePage.style";
+import { StyledNavBar } from "./component-styles/NavBar/NavBar.style";
+import { StyledReviewsPage } from "./component-styles/ReviewsPage/ReviewsPage.style";
 
 function App(){
   // state for all users
