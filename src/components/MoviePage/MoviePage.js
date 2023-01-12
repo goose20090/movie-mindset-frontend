@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRouteMatch, Route, useParams} from "react-router-dom";
+import { useRouteMatch, Route} from "react-router-dom";
 import { StyledMovie } from "../../component-styles/MoviesPage/Movie.style";
 import { StyledNestedNavLink } from "../../component-styles/MoviesPage/MoviePage.style";
 import { StyledReviewCapsule } from "../../component-styles/MoviesPage/ReviewCapsule.style";
