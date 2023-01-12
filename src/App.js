@@ -65,9 +65,7 @@ function App(){
 
   function handleAddToUsers(newUser){
     let usersArr = [...users]
-    console.log(usersArr)
     usersArr.push(newUser)
-    console.log(usersArr)
     setUsers(usersArr)
 
   }
@@ -91,7 +89,7 @@ function App(){
     setUsers(usersArr)
   }
 
-  // Event handler for Delete Request
+  // Event handler for Review Delete Request
 
   function handleDelete(deletedReview){
     let moviesArr = [...movies]

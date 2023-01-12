@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useRouteMatch, Route} from "react-router-dom";
+import { useRouteMatch, Route, useParams} from "react-router-dom";
 import { StyledMovie } from "../../component-styles/MoviesPage/Movie.style";
 import { StyledNestedNavLink } from "../../component-styles/MoviesPage/MoviePage.style";
 import { StyledReviewCapsule } from "../../component-styles/MoviesPage/ReviewCapsule.style";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function MoviePage({className, movies, isLoading}){
+
+    useDocumentTitle('MovieMindset | Movies')
 
     const match = useRouteMatch()
     const [review, setReview] = useState({})

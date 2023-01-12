@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { StyledReviewCreateHub } from "../../component-styles/ReviewsPage/ReviewCreateHub.style";
 import { StyledReviewRUDHub } from "../../component-styles/ReviewsPage/ReviewRUDHub.style";
 import { StyledUserProfile } from "../../component-styles/ReviewsPage/UserProfile.style";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview, handleDelete, handleAddMovie}){
 
     // NOTE- Current User controls which user and user's ratings are shown in the left container on this page 
     
     // NOTE- Current Review controls which review is contained in the right container (when isRUDing is true)
+
+    useDocumentTitle('MovieMindset | Reviews')
 
     const [currentReview, setCurrentReview] = useState(false)
     const [isRUDing, setIsRUDing] = useState(false)

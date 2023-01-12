@@ -2,16 +2,17 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { MovPgStyledRating } from "../../component-styles/Misc/Rating.style";
 import { StyledRatingContainer } from "../../component-styles/MoviesPage/RatingContainer.style";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function Movie({className, movies, setReview}){
     const params = useParams()
     const movie = movies[params.movieId]
     const reviews = movie.reviews
-    console.log(reviews.length)
     function handleClick(id){
         setReview(reviews.find((review)=> review.id === id))
     }
 
+    useDocumentTitle(`MovieMindset | ${movie.title}`)
     return(
         <div className= {className}>
             <h2>{movie.title}</h2>

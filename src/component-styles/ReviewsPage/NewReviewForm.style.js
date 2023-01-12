@@ -12,6 +12,7 @@ export const StyledNewReviewForm = styled(NewReviewForm)`
 
 input{
     width: 200px;
+    margin-left: 1%;
 }
 
 h2{
