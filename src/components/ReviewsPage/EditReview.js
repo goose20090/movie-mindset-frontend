@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { StyledCommentForm } from "../../component-styles/ReviewsPage/CommentForm.style"
 import { StyledStarRating } from "../../component-styles/ReviewsPage/StarRating.style";
 
@@ -21,7 +23,19 @@ function EditReview({className, currentReview, onUpdateReview}){
             }),
         })
         .then((res)=>res.json())
-        .then((updatedReviewObj)=> onUpdateReview(updatedReviewObj))
+        .then((updatedReviewObj)=> {
+            onUpdateReview(updatedReviewObj)
+            toast(`Your review for '${updatedReviewObj.movie.title}' has been updated`,{
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
+        })
     }
     return(
         <div className={className}>

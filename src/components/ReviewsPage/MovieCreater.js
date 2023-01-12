@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { StyledSimpleButton } from "../../component-styles/Misc/SimpleButton.style";
 
 function MovieCreater({className, setIsCreatingMovie, handleAddMovie, setReviewingMovie, setIsSearching}){
@@ -34,6 +36,17 @@ function MovieCreater({className, setIsCreatingMovie, handleAddMovie, setReviewi
             setReviewingMovie(res)
             setIsCreatingMovie(false)
             setIsSearching(false)
+            console.log(res.title)
+            toast(`'${res.title}' added to reviwable movies`,{
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
         })
     }
     return(

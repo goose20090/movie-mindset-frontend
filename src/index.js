@@ -6,12 +6,14 @@ import reportWebVitals from "./testing-and-web-vitals/reportWebVitals"
 import {BrowserRouter} from "react-router-dom"
 import FontStyles from './global-styles-and-fonts/fontStyles';
 import { GlobalStyles } from './global-styles-and-fonts/GlobalStyles';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
 root.render(
   <React.StrictMode>
     <FontStyles/>
+    <ToastContainer/>
     <GlobalStyles/>
     <BrowserRouter>
       <QueryClientProvider client = {queryClient}>

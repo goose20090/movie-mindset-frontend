@@ -2,6 +2,7 @@ import React from "react";
 import { StyledEditReview } from "../../component-styles/ReviewsPage/EditReview.style";
 import useStarify from "../../hooks/useStarify";
 import { StyledSimpleButton } from "../../component-styles/Misc/SimpleButton.style";
+import { toast } from "react-toastify";
 
 function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEditing, onUpdateReview, onDelete}){
     
@@ -18,7 +19,18 @@ function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEd
             method: "DELETE",
         })
         .then(res=>res.json())
-        .then((res)=> console.log('deleted:', res))
+        .then((res)=> {
+          toast(`Your review of '${res.movie.title}' has been deleted`,{
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
+        })
     }
     return(
         <div className={className}>

@@ -37,7 +37,7 @@ function MovieSearcher({className, movies, handleMovieClick, setIsCreatingMovie,
                 Pick a movie to review or <span id = "create-review-link" onClick = {()=> setIsCreatingMovie(true)}>enter a new one</span>
             </h2>
             <div id = "show-movies">
-            <form>
+            <form onSubmit={(e)=> e.preventDefault()}>
                 <input id = 'search-bar' type={"text"} placeholder= "search for a movie e.g. Fargo" value = {formData} onChange= {handleChange}/>
             </form>
                 <ul>
