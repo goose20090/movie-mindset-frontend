@@ -7,9 +7,10 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function MoviePage({className, movies, isLoading}){
 
-    useDocumentTitle('MovieMindset | Movies')
+    useDocumentTitle('MovieMindset | Movies');
+    const match = useRouteMatch();
 
-    const match = useRouteMatch()
+    // Review to be shown in reviewCapsule in nested route
     const [review, setReview] = useState({})
 
     function handleClick(e){
@@ -17,6 +18,7 @@ function MoviePage({className, movies, isLoading}){
 
     }
 
+    // Render Nested Routes from movies state
     const renderMovieLinks = Object.keys(movies).map((movieId)=>(
         <li key = {movieId}>
             <StyledNestedNavLink activeStyle = {{color: 'lightgrey', textDecoration: 'underline'}}to = {`/movies/${movieId}`} onClick= {handleClick} id = {movieId}>

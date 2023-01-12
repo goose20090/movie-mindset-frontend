@@ -7,6 +7,7 @@ function NewReviewForm({className, reviewingMovie, onAddReview, currentUser, set
     const [rating, setRating] = useState(5)
     const [comment, setComment] = useState('')
 
+    // Send Post request to backed and pass up response to change relevant state values 
     function handleSubmit(e){
         e.preventDefault()
         fetch('http://localhost:9292/reviews', {

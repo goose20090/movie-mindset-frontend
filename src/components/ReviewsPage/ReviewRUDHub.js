@@ -7,11 +7,10 @@ import { toast } from "react-toastify";
 function ReviewRUDHub({className, setIsRUDing, currentReview, isEditing, setIsEditing, onUpdateReview, onDelete}){
     
 
-    // destructure movie from currentReview
     const {movie} = currentReview
     const stars = useStarify(currentReview.rating)
 
-
+    // Send Review Delete request to backend and pass up to App component to handle change to relevant state values
     function handleClick(){
         onDelete(currentReview)
 

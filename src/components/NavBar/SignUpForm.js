@@ -3,7 +3,9 @@ import { StyledSimpleButton } from "../../component-styles/Misc/SimpleButton.sty
 
 function SignUpForm({className, handleSignUpSubmit}){
 
+    // state value to toggle rendering of popup form
     const [display, setDisplay] = useState(false)
+    // state to control form data
     const [formData, setFormData] = useState('')
 
     function toggleForm(){

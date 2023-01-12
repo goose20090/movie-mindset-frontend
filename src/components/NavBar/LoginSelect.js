@@ -4,8 +4,11 @@ import { StyledSimpleButton } from "../../component-styles/Misc/SimpleButton.sty
 
 function LoginSelect({className, users, handleLogin}){
 
+    // use Reference value to control select's focus
     const selecRef = React.useRef();
 
+
+    // Trigger select open on button via focus
     function handleClick(){
         if(selecRef.current){
             selecRef.current.focus()
@@ -45,7 +48,8 @@ function LoginSelect({className, users, handleLogin}){
             }
           },
       }
-      
+   
+    // Add userNames to select options
     let options = []
     users.forEach(user => {
         options.push({value: [user.name], label: [user.name]})

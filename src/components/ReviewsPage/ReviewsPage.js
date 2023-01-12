@@ -6,9 +6,9 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handleAddReview, handleDelete, handleAddMovie}){
 
-    // NOTE- Current User controls which user and user's ratings are shown in the left container on this page 
+    //currentUser controls which user and user's ratings are shown in the left container on this page 
     
-    // NOTE- Current Review controls which review is contained in the right container (when isRUDing is true)
+    //currentReview controls which review is contained in the right container (when isRUDing is true)
 
     useDocumentTitle('MovieMindset | Reviews')
 
@@ -56,6 +56,8 @@ function ReviewsPage({currentUser, className, handleReviewUpdate, movies, handle
 
         handleAddReview(newReview)
     }
+
+    // pass Delete request and hide RUD hub
 
     function onDelete(deletedReview){
         setIsRUDing(false)

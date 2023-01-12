@@ -5,9 +5,12 @@ import { StyledRatingContainer } from "../../component-styles/MoviesPage/RatingC
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 function Movie({className, movies, setReview}){
+    // find current movie based on params
     const params = useParams()
     const movie = movies[params.movieId]
     const reviews = movie.reviews
+
+    // Set reviewCapsule review on each click of rating
     function handleClick(id){
         setReview(reviews.find((review)=> review.id === id))
     }

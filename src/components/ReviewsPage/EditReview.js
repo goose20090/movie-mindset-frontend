@@ -9,6 +9,8 @@ function EditReview({className, currentReview, onUpdateReview}){
     const[comment, setComment] = useState(currentReview.comment)
     const [rating, setRating] = useState(currentReview.rating)
 
+
+    // send PATCH request to backend and pass up response to change relevant state values
     function handleSubmit(e){
         e.preventDefault();
 

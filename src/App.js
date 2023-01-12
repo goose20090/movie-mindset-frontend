@@ -94,16 +94,21 @@ function App(){
   function handleDelete(deletedReview){
     let moviesArr = [...movies]
 
+    // remove from movies state
+
     let movie = moviesArr.find((movie)=> movie.id === deletedReview.movie_id)
     movie.reviews = movie.reviews.filter((review)=> review.id !== deletedReview.id)
     setMovies(moviesArr)
 
+
+    // removie from users state
     let usersArr = [...users]
 
     let user = usersArr.find((user)=> user.id === deletedReview.user_id)
     user.reviews = user.reviews.filter((review)=> review.id !== deletedReview.id)
     setUsers(usersArr)
 
+    // update currentUser state to render new reviews property on DOM
     setCurrentUser(users.find((user)=> user.id === deletedReview.user_id))
   }
 

@@ -9,13 +9,17 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
 
     const history = useHistory();
 
+    // Login selected User
     function handleLogin(e){
         const loggedInUser = users.find((user)=> user.name === e.value[0])
         setCurrentUser(loggedInUser)
         setLoggedIn(!loggedIn)
     }
 
+    // Logout selected User
+
     function handleLogout(e){
+        // navigate user to non-user-specifc page to prevent app crash
         if (history.location.pathname === "/reviews"){
             history.push("/");
         }
@@ -23,6 +27,7 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
         setCurrentUser(false)
     }
 
+    // POST new user to backend
     function handleSignUpSubmit(newUser){
         fetch('http://localhost:9292/users', {
             method: "POST",
@@ -53,10 +58,6 @@ function Login({currentUser, setCurrentUser, users, className, handleAddToUsers}
             <div id = "login-hub">
                 <StyledSignUpForm handleSignUpSubmit = {handleSignUpSubmit}/>
                 <StyledLoginSelect handleLogin={handleLogin} users = {users}/>
-                {/* <select id = "login" onChange = {handleLogin}>
-                    <option value = "">Login</option>
-                    {users? users.map((user)=> <option key = {user.id} value = {user.name}>{user.name}</option>): null}
-                </select> */}
             </div>
             }
         </div>
