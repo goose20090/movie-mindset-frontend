@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { StyledCommentForm } from "../../component-styles/ReviewsPage/CommentForm.style";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import { StyledStarRating } from "../../component-styles/ReviewsPage/StarRating.style";
 
 function NewReviewForm({className, reviewingMovie, onAddReview, currentUser, setIsSearching}){
@@ -23,7 +26,19 @@ function NewReviewForm({className, reviewingMovie, onAddReview, currentUser, set
         }),
         })
         .then(res=>res.json())
-        .then(res=> onAddReview(res))
+        .then(res=> {
+            onAddReview(res)
+            toast(`Review of '${res.movie.title}' added to your reviews`,{
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
+        })
     }
 
     return(
