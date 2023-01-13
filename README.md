@@ -60,7 +60,7 @@ On their page, users can use a search bar to find movies to create new reviews f
 
 ![a user creating a new review](./gifs/create-review.gif)
 
-From that search bar, they can create a new movie to be reviewable by all users:
+From that search bar, they can create a new movie to be reviewable for all users:
 
 ![a user creating a new movie](./gifs/create-movie.gif)
 
